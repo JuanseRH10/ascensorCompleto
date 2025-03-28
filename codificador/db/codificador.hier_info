@@ -1,0 +1,32 @@
+|codificador
+I0 => valido.DATAA
+I1 => code.DATAA
+I1 => valido.OUTPUTSELECT
+I2 => code.OUTPUTSELECT
+I2 => code.DATAA
+I2 => valido.OUTPUTSELECT
+I3 => code.OUTPUTSELECT
+I3 => code.OUTPUTSELECT
+I3 => valido.OUTPUTSELECT
+I4 => code.OUTPUTSELECT
+I4 => code.OUTPUTSELECT
+I4 => code.DATAA
+I4 => valido.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => valido.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => valido.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => valido.OUTPUTSELECT
+code[0] <= code.DB_MAX_OUTPUT_PORT_TYPE
+code[1] <= code.DB_MAX_OUTPUT_PORT_TYPE
+code[2] <= code.DB_MAX_OUTPUT_PORT_TYPE
+valido <= valido.DB_MAX_OUTPUT_PORT_TYPE
+
+

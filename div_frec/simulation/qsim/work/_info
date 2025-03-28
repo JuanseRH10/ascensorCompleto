@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\div_frec\simulation\qsim
+vdiv_frec
+Z1 I>Ue_gLKB9hGzWdFAk@eaz2
+Z2 V_g_b@_;JckA1E[9HHR=XZ3
+Z3 dC:\altera\13.1\div_frec\simulation\qsim
+Z4 w1741124031
+Z5 8div_frec.vo
+Z6 Fdiv_frec.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|div_frec.vo|
+Z9 o-work work -O0
+!i10b 1
+Z10 !s100 jzdo2AN4:1BUj>=:kcKK=3
+!s85 0
+Z11 !s108 1741124031.625000
+Z12 !s107 div_frec.vo|
+!s101 -O0
+vdiv_frec_vlg_check_tst
+!i10b 1
+Z13 !s100 8gQ5HC=lBdb]@i:dFT2aC1
+Z14 IYch:k<>i0FYL[eUF9IWA93
+Z15 Vz]P[cH@;T7c7Qk`>A5HJS0
+R3
+Z16 w1741124029
+Z17 8div_frec.vwf.vt
+Z18 Fdiv_frec.vwf.vt
+L0 57
+R7
+r1
+!s85 0
+31
+Z19 !s108 1741124031.781000
+Z20 !s107 div_frec.vwf.vt|
+Z21 !s90 -work|work|div_frec.vwf.vt|
+!s101 -O0
+R9
+vdiv_frec_vlg_sample_tst
+!i10b 1
+Z22 !s100 nDhce<M^V3NAJR=U`6=6_2
+Z23 I@<`ZLR;3<E1IWi2z?W=EX2
+Z24 VC]DoBhKoDgK5`5h^HI6KK0
+R3
+R16
+R17
+R18
+L0 29
+R7
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R9
+vdiv_frec_vlg_vec_tst
+!i10b 1
+Z25 !s100 nhB`na;LPL0Lj9CX4[m:a2
+Z26 I86OY;eK8oYB@53g_=3>VA0
+Z27 VMXbOFMSJ^YfBho3JQbnI40
+R3
+R16
+R17
+R18
+Z28 L0 179
+R7
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R9

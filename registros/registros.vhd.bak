@@ -1,0 +1,41 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity registros is
+
+	port
+	(
+		
+		PS, PB, PD	: in  std_logic_vector(4 downto 0);
+		reset1  :  in std_logic;
+		reset2  : in std_logic;
+		
+		pet1, pet2  :  out  std_logic_vector(2 downto 0)
+		
+	);
+end registros;
+
+
+
+architecture arch_registros of registros is
+
+	-- Declarations (optional)
+
+begin
+
+	-- Process Statement (optional)
+
+	-- Concurrent Procedure Call (optional)
+
+	-- Concurrent Signal Assignment (optional)
+
+	-- Conditional Signal Assignment (optional)
+
+	-- Selected Signal Assignment (optional)
+
+	-- Component Instantiation Statement (optional)
+
+	-- Generate Statement (optional)
+
+end arch_registros;
+

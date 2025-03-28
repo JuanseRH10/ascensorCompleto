@@ -1,0 +1,43 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity div_frec is
+	port
+	(
+
+		clk	: in  std_logic;
+		out1, out2 : buffer std_logic
+		
+	);
+end div_frec;
+
+
+
+architecture arch_div_frec of div_frec is
+
+	signal count1 : integer range 0 to 7;
+
+begin
+	
+	process (clk)
+		variable count2 : integer range 0 to 25000000;
+	begin
+		if (clk'event and clk='1') then
+			count1 <= count1 + 1;
+			count2 := count2 + 1;
+			
+			if (count1=2) then
+				out1 <= not out1;
+				count1 <= 0;
+			end if;
+			
+			if (count2=25000000) then
+				out2 <= not out2;
+				count2 := 0;
+			end if;
+			
+		end if;
+	
+	end process;
+
+end arch_div_frec;

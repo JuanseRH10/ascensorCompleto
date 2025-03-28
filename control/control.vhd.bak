@@ -1,0 +1,92 @@
+entity control is
+	port
+	(
+		
+		clk : in std_logic;
+		pisoActual, pet1, pet2	: in  std_logic_vector(2 downto 0);
+		subir, bajar  : out std_logic		
+		
+	);
+end control;
+
+
+
+
+architecture arch_control of control is
+
+ signal s1, s3 : std_logic_vector(2 downto 0)
+ signal s2, s4, s5, s6 std_logic;
+ signal c11, c12, c13 : std_logic;
+
+	component restador is
+		generic
+		(
+			n	: integer  :=	3
+		);
+
+		port
+		(
+			
+			x, y	: in  std_logic_vector(n-1 downto 0);
+			sig   : out std_logic;
+			mag   : out std_logic_vector(n-1 downto 0)
+
+		);
+	end component;
+
+	component comparadorNbits is
+		generic
+		(
+			n	: integer  :=	4
+			
+		);
+
+		port
+		(
+			-- Input ports
+			A	: in  std_logic_vector(n-1 downto 0);
+			B	: in  std_logic_vector(n-1 downto 0);
+			
+			AiguB  : out std_logic;
+			AmayB  : out std_logic;
+			AmenB  : out std_logic
+			
+		);
+	end component;
+	
+	component sensorPersonas is
+		port
+		(
+			
+			clk	: in  std_logic; -- Reloj de la FPGA
+			sensorA : in std_logic;
+			sensorB : in std_logic;
+			
+			personaEntra : out std_logic;
+			personaSale  : out std_logic
+			
+		);
+	end component;
+	
+	component contadorPersonas is
+		 Port (
+			  clk        : in  std_logic;                 
+			  reset      : in  std_logic;                 
+			  personaEntra  : in  std_logic;                 
+			  personaSale : in  std_logic; 
+			  
+			  cuenta      : out std_logic_vector(3 downto 0) 
+		 );
+	end component;
+	
+	
+begin
+
+	U1 : restador port map(pisoActual,pet1,s1,s2);
+	U2 : restador port map(pisoActual,pet2,s3,s4);
+	U3 : comparadorNbits port map('0'&s1,'0'&s3,c11,c12,c13);
+	
+
+
+end arch_control;
+

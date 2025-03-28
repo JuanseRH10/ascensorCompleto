@@ -1,0 +1,393 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "03/19/2025 22:38:04"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module sensorPersonas (
+	clk,
+	sensorA,
+	sensorB,
+	personaEntra,
+	personaSale);
+input 	clk;
+input 	sensorA;
+input 	sensorB;
+output 	personaEntra;
+output 	personaSale;
+
+// Design Ports Information
+// personaEntra	=>  Location: PIN_R7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// personaSale	=>  Location: PIN_T7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// sensorB	=>  Location: PIN_P8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// sensorA	=>  Location: PIN_R8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("sensorPersonas_6_1200mv_85c_v_slow.sdo");
+// synopsys translate_on
+
+wire \personaEntra~output_o ;
+wire \personaSale~output_o ;
+wire \clk~input_o ;
+wire \clk~inputclkctrl_outclk ;
+wire \sensorB~input_o ;
+wire \sensorBprev~feeder_combout ;
+wire \sensorBprev~q ;
+wire \sensorA~input_o ;
+wire \sensorAprev~q ;
+wire \primeroB~2_combout ;
+wire \primeroB~3_combout ;
+wire \primeroB~q ;
+wire \process_0~1_combout ;
+wire \primeroA~0_combout ;
+wire \primeroA~q ;
+wire \process_0~0_combout ;
+wire \personaEntra~reg0_q ;
+wire \personaSale~2_combout ;
+wire \personaSale~reg0_q ;
+
+
+// Location: IOOBUF_X0_Y2_N2
+cycloneiii_io_obuf \personaEntra~output (
+	.i(\personaEntra~reg0_q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\personaEntra~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \personaEntra~output .bus_hold = "false";
+defparam \personaEntra~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y2_N9
+cycloneiii_io_obuf \personaSale~output (
+	.i(\personaSale~reg0_q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\personaSale~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \personaSale~output .bus_hold = "false";
+defparam \personaSale~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N1
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G4
+cycloneiii_clkctrl \clk~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\clk~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \clk~inputclkctrl .clock_type = "global clock";
+defparam \clk~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y2_N15
+cycloneiii_io_ibuf \sensorB~input (
+	.i(sensorB),
+	.ibar(gnd),
+	.o(\sensorB~input_o ));
+// synopsys translate_off
+defparam \sensorB~input .bus_hold = "false";
+defparam \sensorB~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N30
+cycloneiii_lcell_comb \sensorBprev~feeder (
+// Equation(s):
+// \sensorBprev~feeder_combout  = \sensorB~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\sensorB~input_o ),
+	.cin(gnd),
+	.combout(\sensorBprev~feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \sensorBprev~feeder .lut_mask = 16'hFF00;
+defparam \sensorBprev~feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y2_N31
+dffeas sensorBprev(
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\sensorBprev~feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\sensorBprev~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam sensorBprev.is_wysiwyg = "true";
+defparam sensorBprev.power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y2_N22
+cycloneiii_io_ibuf \sensorA~input (
+	.i(sensorA),
+	.ibar(gnd),
+	.o(\sensorA~input_o ));
+// synopsys translate_off
+defparam \sensorA~input .bus_hold = "false";
+defparam \sensorA~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: FF_X1_Y2_N11
+dffeas sensorAprev(
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\sensorA~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\sensorAprev~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam sensorAprev.is_wysiwyg = "true";
+defparam sensorAprev.power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N18
+cycloneiii_lcell_comb \primeroB~2 (
+// Equation(s):
+// \primeroB~2_combout  = (\sensorB~input_o  & ((\sensorBprev~q  & ((\primeroB~q ))) # (!\sensorBprev~q  & (!\primeroA~q )))) # (!\sensorB~input_o  & (((\primeroB~q ))))
+
+	.dataa(\primeroA~q ),
+	.datab(\sensorB~input_o ),
+	.datac(\sensorBprev~q ),
+	.datad(\primeroB~q ),
+	.cin(gnd),
+	.combout(\primeroB~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \primeroB~2 .lut_mask = 16'hF704;
+defparam \primeroB~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N20
+cycloneiii_lcell_comb \primeroB~3 (
+// Equation(s):
+// \primeroB~3_combout  = (\primeroB~2_combout  & (((\sensorAprev~q ) # (!\primeroB~q )) # (!\sensorA~input_o )))
+
+	.dataa(\sensorA~input_o ),
+	.datab(\sensorAprev~q ),
+	.datac(\primeroB~q ),
+	.datad(\primeroB~2_combout ),
+	.cin(gnd),
+	.combout(\primeroB~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \primeroB~3 .lut_mask = 16'hDF00;
+defparam \primeroB~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y2_N21
+dffeas primeroB(
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\primeroB~3_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\primeroB~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam primeroB.is_wysiwyg = "true";
+defparam primeroB.power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N24
+cycloneiii_lcell_comb \process_0~1 (
+// Equation(s):
+// \process_0~1_combout  = (\sensorA~input_o  & !\sensorAprev~q )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\sensorA~input_o ),
+	.datad(\sensorAprev~q ),
+	.cin(gnd),
+	.combout(\process_0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \process_0~1 .lut_mask = 16'h00F0;
+defparam \process_0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N12
+cycloneiii_lcell_comb \primeroA~0 (
+// Equation(s):
+// \primeroA~0_combout  = (!\process_0~0_combout  & ((\process_0~1_combout  & (!\primeroB~q )) # (!\process_0~1_combout  & ((\primeroA~q )))))
+
+	.dataa(\primeroB~q ),
+	.datab(\process_0~1_combout ),
+	.datac(\primeroA~q ),
+	.datad(\process_0~0_combout ),
+	.cin(gnd),
+	.combout(\primeroA~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \primeroA~0 .lut_mask = 16'h0074;
+defparam \primeroA~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y2_N13
+dffeas primeroA(
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\primeroA~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\primeroA~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam primeroA.is_wysiwyg = "true";
+defparam primeroA.power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N16
+cycloneiii_lcell_comb \process_0~0 (
+// Equation(s):
+// \process_0~0_combout  = (\sensorB~input_o  & (!\sensorBprev~q  & \primeroA~q ))
+
+	.dataa(gnd),
+	.datab(\sensorB~input_o ),
+	.datac(\sensorBprev~q ),
+	.datad(\primeroA~q ),
+	.cin(gnd),
+	.combout(\process_0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \process_0~0 .lut_mask = 16'h0C00;
+defparam \process_0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y2_N17
+dffeas \personaEntra~reg0 (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\process_0~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\personaEntra~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \personaEntra~reg0 .is_wysiwyg = "true";
+defparam \personaEntra~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y2_N14
+cycloneiii_lcell_comb \personaSale~2 (
+// Equation(s):
+// \personaSale~2_combout  = (\sensorA~input_o  & (!\sensorAprev~q  & (\primeroB~q  & !\process_0~0_combout )))
+
+	.dataa(\sensorA~input_o ),
+	.datab(\sensorAprev~q ),
+	.datac(\primeroB~q ),
+	.datad(\process_0~0_combout ),
+	.cin(gnd),
+	.combout(\personaSale~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \personaSale~2 .lut_mask = 16'h0020;
+defparam \personaSale~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y2_N15
+dffeas \personaSale~reg0 (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\personaSale~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\personaSale~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \personaSale~reg0 .is_wysiwyg = "true";
+defparam \personaSale~reg0 .power_up = "low";
+// synopsys translate_on
+
+assign personaEntra = \personaEntra~output_o ;
+
+assign personaSale = \personaSale~output_o ;
+
+endmodule

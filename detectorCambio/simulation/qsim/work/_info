@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\VHDL\detectorCambio\simulation\qsim
+vdetectorCambio
+Z1 !s100 Z3gM`B2DQ=aKgT:FCzEa?1
+Z2 I>EZbjSC_`JWg2VUDP;<e43
+Z3 VFbhYijGCzMX_0fh:lQ5ib0
+Z4 dC:\altera\13.1\VHDL\detectorCambio\simulation\qsim
+Z5 w1743100792
+Z6 8detectorCambio.vo
+Z7 FdetectorCambio.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|detectorCambio.vo|
+Z10 o-work work -O0
+Z11 ndetector@cambio
+!i10b 1
+!s85 0
+Z12 !s108 1743100793.441000
+Z13 !s107 detectorCambio.vo|
+!s101 -O0
+vdetectorCambio_vlg_check_tst
+!i10b 1
+Z14 !s100 ?Ac2UhV^P6M5VKGdPSCYI1
+Z15 I9:UM;>_A?2L`[bzWReN6h1
+Z16 Vm?3Oc2MnYT?4DWh=TflK92
+R4
+Z17 w1743100791
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 63
+R8
+r1
+!s85 0
+31
+Z20 !s108 1743100793.803000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+Z23 ndetector@cambio_vlg_check_tst
+vdetectorCambio_vlg_sample_tst
+!i10b 1
+Z24 !s100 jgK2oa8QenUP9:LAMTOb:1
+Z25 IN6iV=K6hINY^]SeoHRaLA2
+Z26 VDL6]1F1XREaQRozj:]SZZ2
+R4
+R17
+R18
+R19
+L0 29
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z27 ndetector@cambio_vlg_sample_tst
+vdetectorCambio_vlg_vec_tst
+!i10b 1
+!s100 <oko^SKm]WRnBaJ97ZXC30
+I]Cgj[i^cm3:WN0MK5WH:_0
+Z28 V@Pc3D5d=mX3H@4dPi3^hG2
+R4
+R17
+R18
+R19
+Z29 L0 158
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z30 ndetector@cambio_vlg_vec_tst

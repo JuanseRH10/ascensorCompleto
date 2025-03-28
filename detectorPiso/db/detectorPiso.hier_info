@@ -1,0 +1,20 @@
+|detectorPiso
+subir => nuevoPiso.OUTPUTSELECT
+subir => nuevoPiso.OUTPUTSELECT
+subir => nuevoPiso.OUTPUTSELECT
+bajar => nuevoPiso.OUTPUTSELECT
+bajar => nuevoPiso.OUTPUTSELECT
+bajar => nuevoPiso.OUTPUTSELECT
+peticion1[0] => Equal0.IN2
+peticion1[1] => Equal0.IN1
+peticion1[2] => Equal0.IN0
+peticion2[0] => Equal1.IN2
+peticion2[1] => Equal1.IN1
+peticion2[2] => Equal1.IN0
+pisoActual[0] <= pisoActual[0].DB_MAX_OUTPUT_PORT_TYPE
+pisoActual[1] <= pisoActual[1].DB_MAX_OUTPUT_PORT_TYPE
+pisoActual[2] <= pisoActual[2].DB_MAX_OUTPUT_PORT_TYPE
+reset1 <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+reset2 <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+
+

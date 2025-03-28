@@ -1,0 +1,301 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "03/19/2025 23:38:25"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    comparadorNbits
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module comparadorNbits_vlg_sample_tst(
+	A,
+	B,
+	sampler_tx
+);
+input [3:0] A;
+input [3:0] B;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(A or B)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module comparadorNbits_vlg_check_tst (
+	AiguB,
+	AmayB,
+	AmenB,
+	sampler_rx
+);
+input  AiguB;
+input  AmayB;
+input  AmenB;
+input sampler_rx;
+
+reg  AiguB_expected;
+reg  AmayB_expected;
+reg  AmenB_expected;
+
+reg  AiguB_prev;
+reg  AmayB_prev;
+reg  AmenB_prev;
+
+reg  AiguB_expected_prev;
+reg  AmayB_expected_prev;
+reg  AmenB_expected_prev;
+
+reg  last_AiguB_exp;
+reg  last_AmayB_exp;
+reg  last_AmenB_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:3] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 3'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	AiguB_prev = AiguB;
+	AmayB_prev = AmayB;
+	AmenB_prev = AmenB;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	AiguB_expected_prev = AiguB_expected;
+	AmayB_expected_prev = AmayB_expected;
+	AmenB_expected_prev = AmenB_expected;
+end
+
+
+
+// expected AiguB
+initial
+begin
+	AiguB_expected = 1'bX;
+end 
+
+// expected AmenB
+initial
+begin
+	AmenB_expected = 1'bX;
+end 
+
+// expected AmayB
+initial
+begin
+	AmayB_expected = 1'bX;
+end 
+// generate trigger
+always @(AiguB_expected or AiguB or AmayB_expected or AmayB or AmenB_expected or AmenB)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected AiguB = %b | expected AmayB = %b | expected AmenB = %b | ",AiguB_expected_prev,AmayB_expected_prev,AmenB_expected_prev);
+	$display("| real AiguB = %b | real AmayB = %b | real AmenB = %b | ",AiguB_prev,AmayB_prev,AmenB_prev);
+`endif
+	if (
+		( AiguB_expected_prev !== 1'bx ) && ( AiguB_prev !== AiguB_expected_prev )
+		&& ((AiguB_expected_prev !== last_AiguB_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port AiguB :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", AiguB_expected_prev);
+		$display ("     Real value = %b", AiguB_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_AiguB_exp = AiguB_expected_prev;
+	end
+	if (
+		( AmayB_expected_prev !== 1'bx ) && ( AmayB_prev !== AmayB_expected_prev )
+		&& ((AmayB_expected_prev !== last_AmayB_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port AmayB :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", AmayB_expected_prev);
+		$display ("     Real value = %b", AmayB_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_AmayB_exp = AmayB_expected_prev;
+	end
+	if (
+		( AmenB_expected_prev !== 1'bx ) && ( AmenB_prev !== AmenB_expected_prev )
+		&& ((AmenB_expected_prev !== last_AmenB_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port AmenB :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", AmenB_expected_prev);
+		$display ("     Real value = %b", AmenB_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_AmenB_exp = AmenB_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module comparadorNbits_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [3:0] A;
+reg [3:0] B;
+// wires                                               
+wire AiguB;
+wire AmayB;
+wire AmenB;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+comparadorNbits i1 (
+// port map - connection between master ports and signals/registers   
+	.A(A),
+	.AiguB(AiguB),
+	.AmayB(AmayB),
+	.AmenB(AmenB),
+	.B(B)
+);
+// A[ 3 ]
+initial
+begin
+	A[3] = 1'b0;
+	A[3] = #400000 1'b1;
+	A[3] = #400000 1'b0;
+end 
+// A[ 2 ]
+initial
+begin
+	repeat(2)
+	begin
+		A[2] = 1'b0;
+		A[2] = #200000 1'b1;
+		# 200000;
+	end
+	A[2] = 1'b0;
+end 
+// A[ 1 ]
+always
+begin
+	A[1] = 1'b0;
+	A[1] = #100000 1'b1;
+	#100000;
+end 
+// A[ 0 ]
+initial
+begin
+	A[0] = 1'b0;
+end 
+// B[ 3 ]
+initial
+begin
+	repeat(2)
+	begin
+		B[3] = 1'b0;
+		B[3] = #200000 1'b1;
+		# 200000;
+	end
+	B[3] = 1'b0;
+end 
+// B[ 2 ]
+always
+begin
+	B[2] = 1'b0;
+	B[2] = #100000 1'b1;
+	#100000;
+end 
+// B[ 1 ]
+initial
+begin
+	B[1] = 1'b0;
+end 
+// B[ 0 ]
+initial
+begin
+	B[0] = 1'b0;
+end 
+
+comparadorNbits_vlg_sample_tst tb_sample (
+	.A(A),
+	.B(B),
+	.sampler_tx(sampler)
+);
+
+comparadorNbits_vlg_check_tst tb_out(
+	.AiguB(AiguB),
+	.AmayB(AmayB),
+	.AmenB(AmenB),
+	.sampler_rx(sampler)
+);
+endmodule
+

@@ -1,0 +1,12 @@
+|detectorCambio
+clk => detecta.CLK
+clk => reset2Prev.CLK
+clk => reset1Prev.CLK
+reset1 => process_0.IN1
+reset1 => reset1Prev.DATAIN
+reset2 => process_0.IN1
+reset2 => reset2Prev.DATAIN
+clear => detecta.OUTPUTSELECT
+salida <= detecta.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,19 @@
+|contadorPersonas
+clk => cnt[0].CLK
+clk => cnt[1].CLK
+clk => cnt[2].CLK
+clk => cnt[3].CLK
+reset => cnt[0].ACLR
+reset => cnt[1].ACLR
+reset => cnt[2].ACLR
+reset => cnt[3].ACLR
+personaEntra => process_0.IN0
+personaEntra => process_0.IN0
+personaSale => process_0.IN1
+personaSale => process_0.IN1
+cuenta[0] << cnt[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] << cnt[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] << cnt[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] << cnt[3].DB_MAX_OUTPUT_PORT_TYPE
+
+

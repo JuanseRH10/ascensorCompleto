@@ -1,0 +1,253 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "03/19/2025 22:38:11"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    sensorPersonas
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module sensorPersonas_vlg_sample_tst(
+	clk,
+	sensorA,
+	sensorB,
+	sampler_tx
+);
+input  clk;
+input  sensorA;
+input  sensorB;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(clk or sensorA or sensorB)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module sensorPersonas_vlg_check_tst (
+	personaEntra,
+	personaSale,
+	sampler_rx
+);
+input  personaEntra;
+input  personaSale;
+input sampler_rx;
+
+reg  personaEntra_expected;
+reg  personaSale_expected;
+
+reg  personaEntra_prev;
+reg  personaSale_prev;
+
+reg  personaEntra_expected_prev;
+reg  personaSale_expected_prev;
+
+reg  last_personaEntra_exp;
+reg  last_personaSale_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:2] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 2'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	personaEntra_prev = personaEntra;
+	personaSale_prev = personaSale;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	personaEntra_expected_prev = personaEntra_expected;
+	personaSale_expected_prev = personaSale_expected;
+end
+
+
+
+// expected personaEntra
+initial
+begin
+	personaEntra_expected = 1'bX;
+	personaEntra_expected = #999000 1'b0;
+end 
+
+// expected personaSale
+initial
+begin
+	personaSale_expected = 1'bX;
+	personaSale_expected = #999000 1'b0;
+end 
+// generate trigger
+always @(personaEntra_expected or personaEntra or personaSale_expected or personaSale)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected personaEntra = %b | expected personaSale = %b | ",personaEntra_expected_prev,personaSale_expected_prev);
+	$display("| real personaEntra = %b | real personaSale = %b | ",personaEntra_prev,personaSale_prev);
+`endif
+	if (
+		( personaEntra_expected_prev !== 1'bx ) && ( personaEntra_prev !== personaEntra_expected_prev )
+		&& ((personaEntra_expected_prev !== last_personaEntra_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port personaEntra :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", personaEntra_expected_prev);
+		$display ("     Real value = %b", personaEntra_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_personaEntra_exp = personaEntra_expected_prev;
+	end
+	if (
+		( personaSale_expected_prev !== 1'bx ) && ( personaSale_prev !== personaSale_expected_prev )
+		&& ((personaSale_expected_prev !== last_personaSale_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port personaSale :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", personaSale_expected_prev);
+		$display ("     Real value = %b", personaSale_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_personaSale_exp = personaSale_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#2000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$stop;
+end 
+endmodule
+
+module sensorPersonas_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg clk;
+reg sensorA;
+reg sensorB;
+// wires                                               
+wire personaEntra;
+wire personaSale;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+sensorPersonas i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.personaEntra(personaEntra),
+	.personaSale(personaSale),
+	.sensorA(sensorA),
+	.sensorB(sensorB)
+);
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #50000 1'b1;
+	#50000;
+end 
+
+// sensorA
+initial
+begin
+	sensorA = 1'b0;
+	sensorA = #400000 1'b1;
+	sensorA = #400000 1'b0;
+	sensorA = #200000 1'b1;
+	sensorA = #200000 1'b0;
+	sensorA = #200000 1'b1;
+	sensorA = #200000 1'b0;
+	sensorA = #200000 1'b1;
+end 
+
+// sensorB
+initial
+begin
+	repeat(18)
+	begin
+		sensorB = 1'b0;
+		sensorB = #55000 1'b1;
+		# 55000;
+	end
+	sensorB = 1'b0;
+end 
+
+sensorPersonas_vlg_sample_tst tb_sample (
+	.clk(clk),
+	.sensorA(sensorA),
+	.sensorB(sensorB),
+	.sampler_tx(sampler)
+);
+
+sensorPersonas_vlg_check_tst tb_out(
+	.personaEntra(personaEntra),
+	.personaSale(personaSale),
+	.sampler_rx(sampler)
+);
+endmodule
+

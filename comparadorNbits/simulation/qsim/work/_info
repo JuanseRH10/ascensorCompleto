@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\comparadorNbits\simulation\qsim
+vcomparadorNbits
+Z1 IZzN9Oa=m^:JQS:07J9Lja1
+Z2 Vg1_SkONZCSliT8d_LM_f>3
+Z3 dC:\altera\13.1\comparadorNbits\simulation\qsim
+Z4 w1742445506
+Z5 8comparadorNbits.vo
+Z6 FcomparadorNbits.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+Z9 ncomparador@nbits
+!i10b 1
+Z10 !s100 h^LYXa7EeK6gd5Wh2:0YK3
+!s85 0
+Z11 !s108 1742445507.543000
+Z12 !s107 comparadorNbits.vo|
+Z13 !s90 -work|work|comparadorNbits.vo|
+!s101 -O0
+vcomparadorNbits_vlg_check_tst
+!i10b 1
+!s100 fK?chlcP5nVH=Vnfnc<071
+I<oLXWJOmoLiA:F0F:ElM]3
+VMN8aN_e[IPzajLbVoaa4n0
+R3
+R4
+Z14 8Waveform.vwf.vt
+Z15 FWaveform.vwf.vt
+L0 59
+R7
+r1
+!s85 0
+31
+Z16 !s108 1742445507.603000
+Z17 !s107 Waveform.vwf.vt|
+Z18 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R8
+ncomparador@nbits_vlg_check_tst
+vcomparadorNbits_vlg_sample_tst
+!i10b 1
+!s100 l[bD^TI]X>P99547b_RP^1
+I:jL<bNg@Vmc`08XmZJUH20
+V93R9hCJZ3<4dh5f7ZWai60
+R3
+R4
+R14
+R15
+L0 29
+R7
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+R8
+ncomparador@nbits_vlg_sample_tst
+vcomparadorNbits_vlg_vec_tst
+!i10b 1
+!s100 <?fo_cSPlDH[?T>>7n08K3
+IA;OSS1<Z3S96hmKF<9QMk1
+VjXEYGGHaG:<Q=lnCB0i<j0
+R3
+R4
+R14
+R15
+L0 208
+R7
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+R8
+ncomparador@nbits_vlg_vec_tst

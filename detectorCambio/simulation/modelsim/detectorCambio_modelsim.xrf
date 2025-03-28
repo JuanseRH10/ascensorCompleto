@@ -1,0 +1,17 @@
+vendor_name = ModelSim
+source_file = 1, C:/altera/13.1/VHDL/detectorCambio/detectorCambio.vhd
+source_file = 1, C:/altera/13.1/VHDL/detectorCambio/db/detectorCambio.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = detectorCambio
+instance = comp, \salida~output\, salida~output, detectorCambio, 1
+instance = comp, \clk~input\, clk~input, detectorCambio, 1
+instance = comp, \clk~inputclkctrl\, clk~inputclkctrl, detectorCambio, 1
+instance = comp, \clear~input\, clear~input, detectorCambio, 1
+instance = comp, \reset2~input\, reset2~input, detectorCambio, 1
+instance = comp, \reset1~input\, reset1~input, detectorCambio, 1
+instance = comp, \reset1Prev~feeder\, reset1Prev~feeder, detectorCambio, 1
+instance = comp, \detecta~0\, detecta~0, detectorCambio, 1
+instance = comp, \detecta~1\, detecta~1, detectorCambio, 1

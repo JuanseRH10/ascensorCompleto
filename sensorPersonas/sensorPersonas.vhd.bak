@@ -1,0 +1,52 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity sensorPersonas is
+	port
+	(
+		
+		clk	: in  std_logic; -- Reloj de la FPGA
+		sensorA : in std_logic;
+		sensorB : in std_logic;
+		
+		personaEntra : out std_logic;
+		personaSale  : out std_logic
+		
+	);
+end sensorPersonas;
+
+
+
+architecture arch_sensorPersonas of sensorPersonas is
+
+	signal primeroA : std_logic := 0;
+	signal primeroB : std_logic := 0;
+
+begin
+
+	process(clk)
+	begin
+	
+		if rising_edge(clk) then
+		
+		personaEntra <= '0';
+		personaSale <= '0';
+		
+			if sensorA <= '1' and sensorB = '0' then
+				primeroA <= '1';
+			elsif sensorA = '0' and sensorB = '1' then
+				primeroB <= '1';
+			end if;
+			
+			
+			if primeroA = '1' and sensorB = '1' then
+				personaEntra <= '1';
+			elsif primeroB = '1' and sensorA = '1' then
+				personaSale <= '1';
+			end if;
+			
+		end if;
+	
+	end process;
+end arch_sensorPersonas;
+

@@ -1,0 +1,161 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -3.970
+TNS   : -82.908
+
+Type  : Slow 1200mV 85C Model Setup 'div_frec:U6|out2'
+Slack : -3.876
+TNS   : -13.777
+
+Type  : Slow 1200mV 85C Model Setup 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -1.045
+TNS   : -4.572
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : -0.156
+TNS   : -0.253
+
+Type  : Slow 1200mV 85C Model Hold 'div_frec:U6|out2'
+Slack : 0.357
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'controlPuerta:U4|div_frec:U2|out2'
+Slack : 0.359
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -1.235
+TNS   : -7.410
+
+Type  : Slow 1200mV 85C Model Recovery 'clk'
+Slack : -1.075
+TNS   : -6.874
+
+Type  : Slow 1200mV 85C Model Removal 'clk'
+Slack : 0.902
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'controlPuerta:U4|div_frec:U2|out2'
+Slack : 1.488
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -53.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -1.000
+TNS   : -6.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'div_frec:U6|out2'
+Slack : -1.000
+TNS   : -5.000
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -3.443
+TNS   : -68.445
+
+Type  : Slow 1200mV 0C Model Setup 'div_frec:U6|out2'
+Slack : -3.371
+TNS   : -11.888
+
+Type  : Slow 1200mV 0C Model Setup 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -0.834
+TNS   : -3.486
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : -0.137
+TNS   : -0.231
+
+Type  : Slow 1200mV 0C Model Hold 'div_frec:U6|out2'
+Slack : 0.312
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'controlPuerta:U4|div_frec:U2|out2'
+Slack : 0.313
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -1.000
+TNS   : -6.000
+
+Type  : Slow 1200mV 0C Model Recovery 'clk'
+Slack : -0.820
+TNS   : -5.178
+
+Type  : Slow 1200mV 0C Model Removal 'clk'
+Slack : 0.768
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'controlPuerta:U4|div_frec:U2|out2'
+Slack : 1.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -53.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -1.000
+TNS   : -6.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'div_frec:U6|out2'
+Slack : -1.000
+TNS   : -5.000
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.758
+TNS   : -26.417
+
+Type  : Fast 1200mV 0C Model Setup 'div_frec:U6|out2'
+Slack : -1.717
+TNS   : -5.547
+
+Type  : Fast 1200mV 0C Model Setup 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -0.135
+TNS   : -0.456
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : -0.184
+TNS   : -0.338
+
+Type  : Fast 1200mV 0C Model Hold 'div_frec:U6|out2'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'controlPuerta:U4|div_frec:U2|out2'
+Slack : 0.188
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -0.262
+TNS   : -1.572
+
+Type  : Fast 1200mV 0C Model Recovery 'clk'
+Slack : -0.185
+TNS   : -0.981
+
+Type  : Fast 1200mV 0C Model Removal 'clk'
+Slack : 0.474
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'controlPuerta:U4|div_frec:U2|out2'
+Slack : 0.815
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -56.062
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'controlPuerta:U4|div_frec:U2|out2'
+Slack : -1.000
+TNS   : -6.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'div_frec:U6|out2'
+Slack : -1.000
+TNS   : -5.000
+
+------------------------------------------------------------

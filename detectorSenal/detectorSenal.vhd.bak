@@ -1,0 +1,51 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity detectorSenal is
+    Port (
+        clk     : in  std_logic;                          -- Reloj del sistema
+        data_in : in  std_logic_vector(2 downto 0);         -- Entrada de 3 bits del codificador
+        reset1  : in  std_logic;                          -- Reset asíncrono para el primer registro
+        reset2  : in  std_logic;                          -- Reset asíncrono para el segundo registro
+        q1      : out std_logic_vector(2 downto 0);         -- Salida del primer registro
+        q2      : out std_logic_vector(2 downto 0)          -- Salida del segundo registro
+    );
+end detectorSenal;
+
+architecture arch_detectorSenal of detectorSenal is
+    -- Registro para almacenar los datos
+    signal reg1 : std_logic_vector(2 downto 0) := (others => '0');
+    signal reg2 : std_logic_vector(2 downto 0) := (others => '0');
+    -- Bandera que indica si ya se capturó la primera señal
+    signal first_captured : std_logic := '0';
+    -- Registro para detectar cambios en data_in
+    signal data_in_prev : std_logic_vector(2 downto 0) := (others => '0');
+begin
+
+    process(clk, reset1, reset2)
+    begin
+        -- Reset asíncrono para cada registro:
+        if reset1 = '1' then
+            reg1           <= (others => '0');
+            first_captured <= '0';
+        elsif reset2 = '1' then
+            reg2 <= (others => '0');
+        elsif rising_edge(clk) then
+            -- Detecta un cambio en la entrada de 3 bits
+            if data_in /= data_in_prev then
+                if first_captured = '0' then
+                    reg1           <= data_in;  -- Captura la primera señal
+                    first_captured <= '1';
+                else
+                    reg2 <= data_in;            -- Captura la segunda señal
+                end if;
+            end if;
+            data_in_prev <= data_in;
+        end if;
+    end process;
+
+    -- Asigna los registros a las salidas
+    q1 <= reg1;
+    q2 <= reg2;
+    
+end arch_detectorSenal;

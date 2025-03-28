@@ -1,0 +1,313 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "03/20/2025 00:19:24"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    contadorSeg
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module contadorSeg_vlg_sample_tst(
+	clk,
+	enable,
+	reset,
+	sampler_tx
+);
+input  clk;
+input  enable;
+input  reset;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(clk or enable or reset)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module contadorSeg_vlg_check_tst (
+	abrir_puerta,
+	cerrar_puerta,
+	cuenta,
+	sampler_rx
+);
+input  abrir_puerta;
+input  cerrar_puerta;
+input [5:0] cuenta;
+input sampler_rx;
+
+reg  abrir_puerta_expected;
+reg  cerrar_puerta_expected;
+reg [5:0] cuenta_expected;
+
+reg  abrir_puerta_prev;
+reg  cerrar_puerta_prev;
+reg [5:0] cuenta_prev;
+
+reg [5:0] cuenta_expected_prev;
+
+reg [5:0] last_cuenta_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:3] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 3'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	abrir_puerta_prev = abrir_puerta;
+	cerrar_puerta_prev = cerrar_puerta;
+	cuenta_prev = cuenta;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	cuenta_expected_prev = cuenta_expected;
+end
+
+
+// expected cuenta[ 5 ]
+initial
+begin
+	cuenta_expected[5] = 1'b0;
+end 
+// expected cuenta[ 4 ]
+initial
+begin
+	cuenta_expected[4] = 1'b0;
+end 
+// expected cuenta[ 3 ]
+initial
+begin
+	cuenta_expected[3] = 1'b0;
+end 
+// expected cuenta[ 2 ]
+initial
+begin
+	cuenta_expected[2] = 1'b0;
+end 
+// expected cuenta[ 1 ]
+initial
+begin
+	cuenta_expected[1] = 1'b0;
+end 
+// expected cuenta[ 0 ]
+initial
+begin
+	cuenta_expected[0] = 1'b1;
+end 
+// generate trigger
+always @(abrir_puerta_expected or abrir_puerta or cerrar_puerta_expected or cerrar_puerta or cuenta_expected or cuenta)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected abrir_puerta = %b | expected cerrar_puerta = %b | expected cuenta = %b | ",abrir_puerta_expected_prev,cerrar_puerta_expected_prev,cuenta_expected_prev);
+	$display("| real abrir_puerta = %b | real cerrar_puerta = %b | real cuenta = %b | ",abrir_puerta_prev,cerrar_puerta_prev,cuenta_prev);
+`endif
+	if (
+		( cuenta_expected_prev[0] !== 1'bx ) && ( cuenta_prev[0] !== cuenta_expected_prev[0] )
+		&& ((cuenta_expected_prev[0] !== last_cuenta_exp[0]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cuenta[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cuenta_expected_prev);
+		$display ("     Real value = %b", cuenta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_cuenta_exp[0] = cuenta_expected_prev[0];
+	end
+	if (
+		( cuenta_expected_prev[1] !== 1'bx ) && ( cuenta_prev[1] !== cuenta_expected_prev[1] )
+		&& ((cuenta_expected_prev[1] !== last_cuenta_exp[1]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cuenta[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cuenta_expected_prev);
+		$display ("     Real value = %b", cuenta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_cuenta_exp[1] = cuenta_expected_prev[1];
+	end
+	if (
+		( cuenta_expected_prev[2] !== 1'bx ) && ( cuenta_prev[2] !== cuenta_expected_prev[2] )
+		&& ((cuenta_expected_prev[2] !== last_cuenta_exp[2]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cuenta[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cuenta_expected_prev);
+		$display ("     Real value = %b", cuenta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_cuenta_exp[2] = cuenta_expected_prev[2];
+	end
+	if (
+		( cuenta_expected_prev[3] !== 1'bx ) && ( cuenta_prev[3] !== cuenta_expected_prev[3] )
+		&& ((cuenta_expected_prev[3] !== last_cuenta_exp[3]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cuenta[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cuenta_expected_prev);
+		$display ("     Real value = %b", cuenta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_cuenta_exp[3] = cuenta_expected_prev[3];
+	end
+	if (
+		( cuenta_expected_prev[4] !== 1'bx ) && ( cuenta_prev[4] !== cuenta_expected_prev[4] )
+		&& ((cuenta_expected_prev[4] !== last_cuenta_exp[4]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cuenta[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cuenta_expected_prev);
+		$display ("     Real value = %b", cuenta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_cuenta_exp[4] = cuenta_expected_prev[4];
+	end
+	if (
+		( cuenta_expected_prev[5] !== 1'bx ) && ( cuenta_prev[5] !== cuenta_expected_prev[5] )
+		&& ((cuenta_expected_prev[5] !== last_cuenta_exp[5]) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port cuenta[5] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", cuenta_expected_prev);
+		$display ("     Real value = %b", cuenta_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_cuenta_exp[5] = cuenta_expected_prev[5];
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module contadorSeg_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg clk;
+reg enable;
+reg reset;
+// wires                                               
+wire abrir_puerta;
+wire cerrar_puerta;
+wire [5:0] cuenta;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+contadorSeg i1 (
+// port map - connection between master ports and signals/registers   
+	.abrir_puerta(abrir_puerta),
+	.cerrar_puerta(cerrar_puerta),
+	.clk(clk),
+	.cuenta(cuenta),
+	.enable(enable),
+	.reset(reset)
+);
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #10000 1'b1;
+	#10000;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+
+// enable
+initial
+begin
+	enable = 1'b1;
+end 
+
+contadorSeg_vlg_sample_tst tb_sample (
+	.clk(clk),
+	.enable(enable),
+	.reset(reset),
+	.sampler_tx(sampler)
+);
+
+contadorSeg_vlg_check_tst tb_out(
+	.abrir_puerta(abrir_puerta),
+	.cerrar_puerta(cerrar_puerta),
+	.cuenta(cuenta),
+	.sampler_rx(sampler)
+);
+endmodule
+
