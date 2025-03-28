@@ -1,0 +1,24 @@
+|restador
+x[0] => Add0.IN8
+x[0] => Add1.IN4
+x[1] => Add0.IN7
+x[1] => Add1.IN3
+x[2] => Add0.IN6
+x[2] => Add1.IN2
+x[3] => Add0.IN5
+x[3] => Add1.IN1
+y[0] => Add1.IN8
+y[0] => Add0.IN4
+y[1] => Add1.IN7
+y[1] => Add0.IN3
+y[2] => Add1.IN6
+y[2] => Add0.IN2
+y[3] => Add1.IN5
+y[3] => Add0.IN1
+sig <= Add0.DB_MAX_OUTPUT_PORT_TYPE
+mag[0] <= mag.DB_MAX_OUTPUT_PORT_TYPE
+mag[1] <= mag.DB_MAX_OUTPUT_PORT_TYPE
+mag[2] <= mag.DB_MAX_OUTPUT_PORT_TYPE
+mag[3] <= mag.DB_MAX_OUTPUT_PORT_TYPE
+
+
