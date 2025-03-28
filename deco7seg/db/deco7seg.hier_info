@@ -1,0 +1,38 @@
+|deco7seg
+A => Mux0.IN16
+A => Mux1.IN16
+A => Mux2.IN16
+A => Mux3.IN16
+A => Mux4.IN16
+A => Mux5.IN16
+A => Mux6.IN16
+B => Mux0.IN17
+B => Mux1.IN17
+B => Mux2.IN17
+B => Mux3.IN17
+B => Mux4.IN17
+B => Mux5.IN17
+B => Mux6.IN17
+C => Mux0.IN18
+C => Mux1.IN18
+C => Mux2.IN18
+C => Mux3.IN18
+C => Mux4.IN18
+C => Mux5.IN18
+C => Mux6.IN18
+D => Mux0.IN19
+D => Mux1.IN19
+D => Mux2.IN19
+D => Mux3.IN19
+D => Mux4.IN19
+D => Mux5.IN19
+D => Mux6.IN19
+a1 <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b1 <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+c1 <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+d1 <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+e1 <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+f1 <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+g1 <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+
+
