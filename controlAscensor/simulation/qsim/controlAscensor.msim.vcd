@@ -1,0 +1,254 @@
+$comment
+	File created using the following command:
+		vcd file controlAscensor.msim.vcd -direction
+$end
+$date
+	Sun Mar 30 23:40:09 2025
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module controlAscensor_vlg_vec_tst $end
+$var reg 1 ! anomalia $end
+$var reg 1 " cambiandoEstado $end
+$var reg 1 # estadoPuerta $end
+$var reg 3 $ pet1 [2:0] $end
+$var reg 3 % pet2 [2:0] $end
+$var reg 3 & pisoActual [2:0] $end
+$var reg 1 ' sobreCarga $end
+$var wire 1 ( bajar $end
+$var wire 1 ) quieto $end
+$var wire 1 * subir $end
+$var wire 1 + sampler $end
+$scope module i1 $end
+$var wire 1 , gnd $end
+$var wire 1 - vcc $end
+$var wire 1 . unknown $end
+$var tri1 1 / devclrn $end
+$var tri1 1 0 devpor $end
+$var tri1 1 1 devoe $end
+$var wire 1 2 subir~output_o $end
+$var wire 1 3 bajar~output_o $end
+$var wire 1 4 quieto~output_o $end
+$var wire 1 5 pet2[1]~input_o $end
+$var wire 1 6 pet2[0]~input_o $end
+$var wire 1 7 pet2[2]~input_o $end
+$var wire 1 8 U1|Equal1~0_combout $end
+$var wire 1 9 pet1[2]~input_o $end
+$var wire 1 : pisoActual[2]~input_o $end
+$var wire 1 ; pisoActual[1]~input_o $end
+$var wire 1 < pet1[1]~input_o $end
+$var wire 1 = pet1[0]~input_o $end
+$var wire 1 > pisoActual[0]~input_o $end
+$var wire 1 ? U1|Add0~1 $end
+$var wire 1 @ U1|Add0~3 $end
+$var wire 1 A U1|Add0~4_combout $end
+$var wire 1 B U1|Add0~2_combout $end
+$var wire 1 C U1|Add0~5 $end
+$var wire 1 D U1|Add0~6_combout $end
+$var wire 1 E U1|Add0~0_combout $end
+$var wire 1 F U1|Add1~0_combout $end
+$var wire 1 G U1|Add2~1 $end
+$var wire 1 H U1|Add2~3 $end
+$var wire 1 I U1|Add2~4_combout $end
+$var wire 1 J U1|Add2~5 $end
+$var wire 1 K U1|Add2~6_combout $end
+$var wire 1 L U1|Add2~2_combout $end
+$var wire 1 M U1|Add2~0_combout $end
+$var wire 1 N U1|Add3~0_combout $end
+$var wire 1 O U1|Add1~1_combout $end
+$var wire 1 P U1|Add3~1_combout $end
+$var wire 1 Q U1|subir~0_combout $end
+$var wire 1 R U1|Add3~2_combout $end
+$var wire 1 S U1|Add1~2_combout $end
+$var wire 1 T U1|LessThan0~0_combout $end
+$var wire 1 U U1|LessThan1~0_combout $end
+$var wire 1 V U1|subir~1_combout $end
+$var wire 1 W U1|Equal0~0_combout $end
+$var wire 1 X U1|LessThan1~2_combout $end
+$var wire 1 Y U1|LessThan1~1_combout $end
+$var wire 1 Z U1|LessThan1~3_combout $end
+$var wire 1 [ U1|subir~2_combout $end
+$var wire 1 \ sobreCarga~input_o $end
+$var wire 1 ] estadoPuerta~input_o $end
+$var wire 1 ^ cambiandoEstado~input_o $end
+$var wire 1 _ anomalia~input_o $end
+$var wire 1 ` U1|eleccion[30]~0_combout $end
+$var wire 1 a U1|eleccion[30]~1_combout $end
+$var wire 1 b U1|eleccion~3_combout $end
+$var wire 1 c U1|eleccion[2]~9_combout $end
+$var wire 1 d U1|eleccion[30]~10_combout $end
+$var wire 1 e U1|eleccion[30]~10clkctrl_outclk $end
+$var wire 1 f U1|eleccion~2_combout $end
+$var wire 1 g U1|eleccion~4_combout $end
+$var wire 1 h U1|eleccion[1]~11_combout $end
+$var wire 1 i U1|eleccion~5_combout $end
+$var wire 1 j U1|eleccion~6_combout $end
+$var wire 1 k U1|eleccion[0]~12_combout $end
+$var wire 1 l U1|eleccion~7_combout $end
+$var wire 1 m U1|eleccion~8_combout $end
+$var wire 1 n U1|LessThan2~0_combout $end
+$var wire 1 o U1|LessThan2~1_combout $end
+$var wire 1 p U1|subir~3_combout $end
+$var wire 1 q U1|bajar~0_combout $end
+$var wire 1 r U1|bajar~1_combout $end
+$var wire 1 s U1|bajar~2_combout $end
+$var wire 1 t U1|quieto~0_combout $end
+$var wire 1 u U1|eleccion [31] $end
+$var wire 1 v U1|eleccion [30] $end
+$var wire 1 w U1|eleccion [29] $end
+$var wire 1 x U1|eleccion [28] $end
+$var wire 1 y U1|eleccion [27] $end
+$var wire 1 z U1|eleccion [26] $end
+$var wire 1 { U1|eleccion [25] $end
+$var wire 1 | U1|eleccion [24] $end
+$var wire 1 } U1|eleccion [23] $end
+$var wire 1 ~ U1|eleccion [22] $end
+$var wire 1 !! U1|eleccion [21] $end
+$var wire 1 "! U1|eleccion [20] $end
+$var wire 1 #! U1|eleccion [19] $end
+$var wire 1 $! U1|eleccion [18] $end
+$var wire 1 %! U1|eleccion [17] $end
+$var wire 1 &! U1|eleccion [16] $end
+$var wire 1 '! U1|eleccion [15] $end
+$var wire 1 (! U1|eleccion [14] $end
+$var wire 1 )! U1|eleccion [13] $end
+$var wire 1 *! U1|eleccion [12] $end
+$var wire 1 +! U1|eleccion [11] $end
+$var wire 1 ,! U1|eleccion [10] $end
+$var wire 1 -! U1|eleccion [9] $end
+$var wire 1 .! U1|eleccion [8] $end
+$var wire 1 /! U1|eleccion [7] $end
+$var wire 1 0! U1|eleccion [6] $end
+$var wire 1 1! U1|eleccion [5] $end
+$var wire 1 2! U1|eleccion [4] $end
+$var wire 1 3! U1|eleccion [3] $end
+$var wire 1 4! U1|eleccion [2] $end
+$var wire 1 5! U1|eleccion [1] $end
+$var wire 1 6! U1|eleccion [0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+b100 $
+b1 %
+b10 &
+0'
+1(
+0)
+0*
+x+
+0,
+1-
+x.
+1/
+10
+11
+02
+13
+04
+05
+16
+07
+08
+19
+0:
+1;
+0<
+0=
+0>
+1?
+0@
+1A
+1B
+0C
+0D
+0E
+0F
+0G
+0H
+0I
+1J
+1K
+0L
+1M
+1N
+1O
+0P
+1Q
+0R
+1S
+0T
+1U
+1V
+0W
+1X
+0Y
+1Z
+0[
+0\
+0]
+0^
+0_
+1`
+1a
+1b
+0c
+1d
+1e
+0f
+0g
+0h
+0i
+0j
+1k
+1l
+1m
+0n
+0o
+0p
+1q
+1r
+1s
+0t
+16!
+05!
+04!
+z3!
+z2!
+z1!
+z0!
+z/!
+z.!
+z-!
+z,!
+z+!
+z*!
+z)!
+z(!
+z'!
+z&!
+z%!
+z$!
+z#!
+z"!
+z!!
+z~
+z}
+z|
+z{
+zz
+zy
+zx
+zw
+zv
+zu
+$end
+#1000000

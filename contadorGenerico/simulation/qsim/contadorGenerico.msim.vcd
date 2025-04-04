@@ -1,0 +1,330 @@
+$comment
+	File created using the following command:
+		vcd file contadorGenerico.msim.vcd -direction
+$end
+$date
+	Mon Mar 31 00:56:02 2025
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module contadorGenerico_vlg_vec_tst $end
+$var reg 1 ! clk $end
+$var reg 1 " enable $end
+$var reg 1 # reset $end
+$var reg 6 $ valorRes [5:0] $end
+$var wire 1 % cuenta [5] $end
+$var wire 1 & cuenta [4] $end
+$var wire 1 ' cuenta [3] $end
+$var wire 1 ( cuenta [2] $end
+$var wire 1 ) cuenta [1] $end
+$var wire 1 * cuenta [0] $end
+$var wire 1 + sampler $end
+$scope module i1 $end
+$var wire 1 , gnd $end
+$var wire 1 - vcc $end
+$var wire 1 . unknown $end
+$var tri1 1 / devclrn $end
+$var tri1 1 0 devpor $end
+$var tri1 1 1 devoe $end
+$var wire 1 2 cuenta[0]~output_o $end
+$var wire 1 3 cuenta[1]~output_o $end
+$var wire 1 4 cuenta[2]~output_o $end
+$var wire 1 5 cuenta[3]~output_o $end
+$var wire 1 6 cuenta[4]~output_o $end
+$var wire 1 7 cuenta[5]~output_o $end
+$var wire 1 8 clk~input_o $end
+$var wire 1 9 clk~inputclkctrl_outclk $end
+$var wire 1 : contador[0]~6_combout $end
+$var wire 1 ; reset~input_o $end
+$var wire 1 < reset~inputclkctrl_outclk $end
+$var wire 1 = valorRes[5]~input_o $end
+$var wire 1 > valorRes[4]~input_o $end
+$var wire 1 ? contador[0]~7 $end
+$var wire 1 @ contador[1]~8_combout $end
+$var wire 1 A enable~input_o $end
+$var wire 1 B contador[1]~9 $end
+$var wire 1 C contador[2]~10_combout $end
+$var wire 1 D contador[2]~11 $end
+$var wire 1 E contador[3]~12_combout $end
+$var wire 1 F contador[3]~13 $end
+$var wire 1 G contador[4]~14_combout $end
+$var wire 1 H contador[4]~15 $end
+$var wire 1 I contador[5]~16_combout $end
+$var wire 1 J Equal0~2_combout $end
+$var wire 1 K valorRes[1]~input_o $end
+$var wire 1 L valorRes[0]~input_o $end
+$var wire 1 M Equal0~0_combout $end
+$var wire 1 N valorRes[2]~input_o $end
+$var wire 1 O valorRes[3]~input_o $end
+$var wire 1 P Equal0~1_combout $end
+$var wire 1 Q Equal0~3_combout $end
+$var wire 1 R contador [5] $end
+$var wire 1 S contador [4] $end
+$var wire 1 T contador [3] $end
+$var wire 1 U contador [2] $end
+$var wire 1 V contador [1] $end
+$var wire 1 W contador [0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+1"
+0#
+b10 $
+0*
+0)
+0(
+0'
+0&
+0%
+x+
+0,
+1-
+x.
+1/
+10
+11
+02
+03
+04
+05
+06
+07
+08
+09
+1:
+0;
+0<
+0=
+0>
+0?
+0@
+1A
+1B
+0C
+0D
+0E
+1F
+0G
+0H
+0I
+1J
+1K
+0L
+0M
+0N
+0O
+1P
+0Q
+0W
+0V
+0U
+0T
+0S
+0R
+$end
+#40000
+1!
+18
+19
+0+
+1W
+1?
+0:
+12
+1*
+1@
+#80000
+0!
+08
+09
+1+
+#120000
+1!
+18
+19
+0+
+0W
+1V
+1M
+0?
+1:
+0B
+0@
+02
+13
+0*
+1)
+1Q
+1B
+1@
+1C
+0C
+#160000
+0!
+08
+09
+1+
+#200000
+1!
+18
+19
+0+
+0V
+0M
+0@
+03
+0)
+0Q
+#240000
+0!
+08
+09
+1+
+#280000
+1!
+18
+19
+0+
+1W
+1?
+0:
+12
+1*
+1@
+#320000
+0!
+08
+09
+1+
+#350000
+1#
+1;
+1<
+0+
+0W
+0?
+1:
+02
+0*
+0@
+#360000
+1!
+18
+19
+1+
+#400000
+0!
+08
+09
+0+
+#440000
+1!
+18
+19
+1+
+#480000
+0!
+08
+09
+0+
+#520000
+1!
+18
+19
+1+
+#560000
+0!
+08
+09
+0+
+#600000
+1!
+18
+19
+1+
+#640000
+0!
+08
+09
+0+
+#680000
+1!
+18
+19
+1+
+#700000
+0#
+0;
+0<
+0+
+#720000
+0!
+08
+09
+1+
+#760000
+1!
+18
+19
+0+
+1W
+1?
+0:
+12
+1*
+1@
+#800000
+0!
+08
+09
+1+
+#840000
+1!
+18
+19
+0+
+0W
+1V
+1M
+0?
+1:
+0B
+0@
+02
+13
+0*
+1)
+1Q
+1B
+1@
+1C
+0C
+#880000
+0!
+08
+09
+1+
+#920000
+1!
+18
+19
+0+
+0V
+0M
+0@
+03
+0)
+0Q
+#960000
+0!
+08
+09
+1+
+#1000000

@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\contadorGenerico\simulation\qsim
+vcontadorGenerico
+Z1 I>FmGMElEjYO=Vj`a8UlcN3
+Z2 Va?84h7Ije=[NIgc2njHj=2
+Z3 dC:\altera\13.1\contadorGenerico\simulation\qsim
+Z4 w1743400561
+Z5 8contadorGenerico.vo
+Z6 FcontadorGenerico.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|contadorGenerico.vo|
+Z9 o-work work -O0
+Z10 ncontador@generico
+!i10b 1
+Z11 !s100 _H2e`SnSkoMf[nB;IH0E<1
+!s85 0
+Z12 !s108 1743400561.811000
+Z13 !s107 contadorGenerico.vo|
+!s101 -O0
+vcontadorGenerico_vlg_check_tst
+!i10b 1
+Z14 !s100 PdW<diIRMNo6I=X2MOJ7T2
+Z15 IJ`BmEV46cd@45ocG@e__;3
+Z16 Vaj_iQS4VR@>NJZ<U>S33j0
+R3
+Z17 w1743400560
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 63
+R7
+r1
+!s85 0
+31
+Z20 !s108 1743400561.865000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R9
+Z23 ncontador@generico_vlg_check_tst
+vcontadorGenerico_vlg_sample_tst
+!i10b 1
+Z24 !s100 Hj>25LPkMBaRYUmhkXiA41
+Z25 IkV@N:D4bibainN2V<<BWj1
+Z26 VMICYdKlk@iT]^6R6Djn250
+R3
+R17
+R18
+R19
+L0 29
+R7
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R9
+Z27 ncontador@generico_vlg_sample_tst
+vcontadorGenerico_vlg_vec_tst
+!i10b 1
+!s100 EJ2@]=?d8@dmnBzf@O`I>1
+Idd]d=C?lF5<WoXNY7k]d72
+Z28 VB2JVlBJKBN?ePI_f[6VVW1
+R3
+R17
+R18
+R19
+Z29 L0 247
+R7
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R9
+Z30 ncontador@generico_vlg_vec_tst

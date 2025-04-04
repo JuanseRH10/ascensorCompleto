@@ -1,0 +1,1052 @@
+|proyectoAscensor
+PS[0] => registrosBotones:U1.PS[0]
+PS[1] => registrosBotones:U1.PS[1]
+PS[2] => registrosBotones:U1.PS[2]
+PS[3] => registrosBotones:U1.PS[3]
+PS[4] => registrosBotones:U1.PS[4]
+PB[0] => registrosBotones:U1.PB[0]
+PB[1] => registrosBotones:U1.PB[1]
+PB[2] => registrosBotones:U1.PB[2]
+PB[3] => registrosBotones:U1.PB[3]
+PB[4] => registrosBotones:U1.PB[4]
+PD[0] => registrosBotones:U1.PD[0]
+PD[1] => registrosBotones:U1.PD[1]
+PD[2] => registrosBotones:U1.PD[2]
+PD[3] => registrosBotones:U1.PD[3]
+PD[4] => registrosBotones:U1.PD[4]
+clk => detectorPiso:U3.clk
+clk => controlPuerta:U4.clk
+clk => div_frec:U6.clk
+anomalia => controlAscensor:U2.anomalia
+anomalia => controlPuerta:U4.anomalia
+anomalia => alarmas:U7.sensorEnergia
+perEn => cantpersonas:U5.perEn
+perSal => cantpersonas:U5.perSal
+botonNotificacion => notificacion.DATAIN
+estadoPuerta << controlPuerta:U4.estadoPuerta
+subiendo << controlAscensor:U2.subir
+bajando << controlAscensor:U2.bajar
+notificacion << botonNotificacion.DB_MAX_OUTPUT_PORT_TYPE
+anomaliaEn << alarmas:U7.anomaliaEn
+luz << alarmas:U7.luz
+alarmaSonora << alarmaSonora.DB_MAX_OUTPUT_PORT_TYPE
+a1 << deco7seg:H1.a1
+b1 << deco7seg:H1.b1
+c1 << deco7seg:H1.c1
+d1 << deco7seg:H1.d1
+e1 << deco7seg:H1.e1
+f1 << deco7seg:H1.f1
+g1 << deco7seg:H1.g1
+a2 << deco7seg:H3.a1
+b2 << deco7seg:H3.b1
+c2 << deco7seg:H3.c1
+d2 << deco7seg:H3.d1
+e2 << deco7seg:H3.e1
+f2 << deco7seg:H3.f1
+g2 << deco7seg:H3.g1
+a3 << deco7seg:H4.a1
+b3 << deco7seg:H4.b1
+c3 << deco7seg:H4.c1
+d3 << deco7seg:H4.d1
+e3 << deco7seg:H4.e1
+f3 << deco7seg:H4.f1
+g3 << deco7seg:H4.g1
+
+
+|proyectoAscensor|registrosBotones:U1
+clk => detectorBoton:U1.clk
+reset1 => detectorBoton:U1.reset1
+reset2 => detectorBoton:U1.reset2
+PS[0] => detectorBoton:U1.PS[0]
+PS[1] => detectorBoton:U1.PS[1]
+PS[2] => detectorBoton:U1.PS[2]
+PS[3] => detectorBoton:U1.PS[3]
+PS[4] => detectorBoton:U1.PS[4]
+PB[0] => detectorBoton:U1.PB[0]
+PB[1] => detectorBoton:U1.PB[1]
+PB[2] => detectorBoton:U1.PB[2]
+PB[3] => detectorBoton:U1.PB[3]
+PB[4] => detectorBoton:U1.PB[4]
+PD[0] => detectorBoton:U1.PD[0]
+PD[1] => detectorBoton:U1.PD[1]
+PD[2] => detectorBoton:U1.PD[2]
+PD[3] => detectorBoton:U1.PD[3]
+PD[4] => detectorBoton:U1.PD[4]
+pet1[0] <= codificador:U2.code[0]
+pet1[1] <= codificador:U2.code[1]
+pet1[2] <= codificador:U2.code[2]
+pet2[0] <= codificador:U3.code[0]
+pet2[1] <= codificador:U3.code[1]
+pet2[2] <= codificador:U3.code[2]
+
+
+|proyectoAscensor|registrosBotones:U1|detectorBoton:U1
+clk => prev_PD[0].CLK
+clk => prev_PD[1].CLK
+clk => prev_PD[2].CLK
+clk => prev_PD[3].CLK
+clk => prev_PD[4].CLK
+clk => prev_PB[0].CLK
+clk => prev_PB[1].CLK
+clk => prev_PB[2].CLK
+clk => prev_PB[3].CLK
+clk => prev_PB[4].CLK
+clk => prev_PS[0].CLK
+clk => prev_PS[1].CLK
+clk => prev_PS[2].CLK
+clk => prev_PS[3].CLK
+clk => prev_PS[4].CLK
+clk => nueva_pet[0].CLK
+clk => nueva_pet[1].CLK
+clk => nueva_pet[2].CLK
+clk => nueva_pet[3].CLK
+clk => nueva_pet[4].CLK
+clk => pet2_reg[0].CLK
+clk => pet2_reg[1].CLK
+clk => pet2_reg[2].CLK
+clk => pet2_reg[3].CLK
+clk => pet2_reg[4].CLK
+clk => pet1_reg[0].CLK
+clk => pet1_reg[1].CLK
+clk => pet1_reg[2].CLK
+clk => pet1_reg[3].CLK
+clk => pet1_reg[4].CLK
+reset1 => pet1_reg.OUTPUTSELECT
+reset1 => pet1_reg.OUTPUTSELECT
+reset1 => pet1_reg.OUTPUTSELECT
+reset1 => pet1_reg.OUTPUTSELECT
+reset1 => pet1_reg.OUTPUTSELECT
+reset2 => pet2_reg.OUTPUTSELECT
+reset2 => pet2_reg.OUTPUTSELECT
+reset2 => pet2_reg.OUTPUTSELECT
+reset2 => pet2_reg.OUTPUTSELECT
+reset2 => pet2_reg.OUTPUTSELECT
+PS[0] => nueva_pet.DATAB
+PS[0] => prev_PS[0].DATAIN
+PS[0] => Equal1.IN4
+PS[1] => nueva_pet.DATAB
+PS[1] => prev_PS[1].DATAIN
+PS[1] => Equal1.IN3
+PS[2] => nueva_pet.DATAB
+PS[2] => prev_PS[2].DATAIN
+PS[2] => Equal1.IN2
+PS[3] => nueva_pet.DATAB
+PS[3] => prev_PS[3].DATAIN
+PS[3] => Equal1.IN1
+PS[4] => nueva_pet.DATAB
+PS[4] => prev_PS[4].DATAIN
+PS[4] => Equal1.IN0
+PB[0] => nueva_pet.DATAB
+PB[0] => prev_PB[0].DATAIN
+PB[0] => Equal3.IN4
+PB[1] => nueva_pet.DATAB
+PB[1] => prev_PB[1].DATAIN
+PB[1] => Equal3.IN3
+PB[2] => nueva_pet.DATAB
+PB[2] => prev_PB[2].DATAIN
+PB[2] => Equal3.IN2
+PB[3] => nueva_pet.DATAB
+PB[3] => prev_PB[3].DATAIN
+PB[3] => Equal3.IN1
+PB[4] => nueva_pet.DATAB
+PB[4] => prev_PB[4].DATAIN
+PB[4] => Equal3.IN0
+PD[0] => nueva_pet.DATAB
+PD[0] => prev_PD[0].DATAIN
+PD[0] => Equal5.IN4
+PD[1] => nueva_pet.DATAB
+PD[1] => prev_PD[1].DATAIN
+PD[1] => Equal5.IN3
+PD[2] => nueva_pet.DATAB
+PD[2] => prev_PD[2].DATAIN
+PD[2] => Equal5.IN2
+PD[3] => nueva_pet.DATAB
+PD[3] => prev_PD[3].DATAIN
+PD[3] => Equal5.IN1
+PD[4] => nueva_pet.DATAB
+PD[4] => prev_PD[4].DATAIN
+PD[4] => Equal5.IN0
+pet1[0] <= pet1_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+pet1[1] <= pet1_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+pet1[2] <= pet1_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+pet1[3] <= pet1_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+pet1[4] <= pet1_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+pet2[0] <= pet2_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+pet2[1] <= pet2_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+pet2[2] <= pet2_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+pet2[3] <= pet2_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+pet2[4] <= pet2_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|registrosBotones:U1|codificador:U2
+I0 => valido.DATAA
+I1 => code.DATAA
+I1 => valido.OUTPUTSELECT
+I2 => code.OUTPUTSELECT
+I2 => code.DATAA
+I2 => valido.OUTPUTSELECT
+I3 => code.OUTPUTSELECT
+I3 => code.OUTPUTSELECT
+I3 => valido.OUTPUTSELECT
+I4 => code.OUTPUTSELECT
+I4 => code.OUTPUTSELECT
+I4 => code.DATAA
+I4 => valido.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => valido.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => valido.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => valido.OUTPUTSELECT
+code[0] <= code.DB_MAX_OUTPUT_PORT_TYPE
+code[1] <= code.DB_MAX_OUTPUT_PORT_TYPE
+code[2] <= code.DB_MAX_OUTPUT_PORT_TYPE
+valido <= valido.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|registrosBotones:U1|codificador:U3
+I0 => valido.DATAA
+I1 => code.DATAA
+I1 => valido.OUTPUTSELECT
+I2 => code.OUTPUTSELECT
+I2 => code.DATAA
+I2 => valido.OUTPUTSELECT
+I3 => code.OUTPUTSELECT
+I3 => code.OUTPUTSELECT
+I3 => valido.OUTPUTSELECT
+I4 => code.OUTPUTSELECT
+I4 => code.OUTPUTSELECT
+I4 => code.DATAA
+I4 => valido.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => code.OUTPUTSELECT
+I5 => valido.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => code.OUTPUTSELECT
+I6 => valido.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => code.OUTPUTSELECT
+I7 => valido.OUTPUTSELECT
+code[0] <= code.DB_MAX_OUTPUT_PORT_TYPE
+code[1] <= code.DB_MAX_OUTPUT_PORT_TYPE
+code[2] <= code.DB_MAX_OUTPUT_PORT_TYPE
+valido <= valido.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlAscensor:U2
+pisoActual[0] => movimientoAscensor:U1.pisoActual[0]
+pisoActual[1] => movimientoAscensor:U1.pisoActual[1]
+pisoActual[2] => movimientoAscensor:U1.pisoActual[2]
+pet1[0] => movimientoAscensor:U1.pet1[0]
+pet1[1] => movimientoAscensor:U1.pet1[1]
+pet1[2] => movimientoAscensor:U1.pet1[2]
+pet2[0] => movimientoAscensor:U1.pet2[0]
+pet2[1] => movimientoAscensor:U1.pet2[1]
+pet2[2] => movimientoAscensor:U1.pet2[2]
+sobreCarga => enableAscensor:U2.sobreCarga
+estadoPuerta => enableAscensor:U2.estadoPuerta
+anomalia => enableAscensor:U2.anomalia
+cambiandoEstado => enableAscensor:U2.cambiandoEstado
+subir <= movimientoAscensor:U1.subir
+bajar <= movimientoAscensor:U1.bajar
+quieto <= movimientoAscensor:U1.quieto
+
+
+|proyectoAscensor|controlAscensor:U2|movimientoAscensor:U1
+enable => eleccion[30].IN1
+enable => quieto.OUTPUTSELECT
+enable => subir.OUTPUTSELECT
+enable => bajar.OUTPUTSELECT
+pet1[0] => eleccion.DATAB
+pet1[0] => eleccion.DATAB
+pet1[0] => eleccion[0].DATAB
+pet1[0] => eleccion[0].DATAB
+pet1[0] => Equal0.IN2
+pet1[0] => Add0.IN3
+pet1[1] => eleccion.DATAB
+pet1[1] => eleccion.DATAB
+pet1[1] => eleccion[1].DATAB
+pet1[1] => eleccion[1].DATAB
+pet1[1] => Equal0.IN1
+pet1[1] => Add0.IN2
+pet1[2] => eleccion.DATAB
+pet1[2] => eleccion.DATAB
+pet1[2] => eleccion[2].DATAB
+pet1[2] => eleccion[2].DATAB
+pet1[2] => Equal0.IN0
+pet1[2] => Add0.IN1
+pet2[0] => eleccion.DATAB
+pet2[0] => eleccion.DATAB
+pet2[0] => eleccion[0].DATAA
+pet2[0] => eleccion[0].DATAB
+pet2[0] => Equal1.IN2
+pet2[0] => Add2.IN3
+pet2[1] => eleccion.DATAB
+pet2[1] => eleccion.DATAB
+pet2[1] => eleccion[1].DATAA
+pet2[1] => eleccion[1].DATAB
+pet2[1] => Equal1.IN1
+pet2[1] => Add2.IN2
+pet2[2] => eleccion.DATAB
+pet2[2] => eleccion.DATAB
+pet2[2] => eleccion[2].DATAA
+pet2[2] => eleccion[2].DATAB
+pet2[2] => Equal1.IN0
+pet2[2] => Add2.IN1
+pisoActual[0] => Add0.IN6
+pisoActual[0] => Add2.IN6
+pisoActual[0] => LessThan2.IN32
+pisoActual[0] => LessThan3.IN32
+pisoActual[0] => LessThan4.IN64
+pisoActual[0] => LessThan5.IN64
+pisoActual[1] => Add0.IN5
+pisoActual[1] => Add2.IN5
+pisoActual[1] => LessThan2.IN31
+pisoActual[1] => LessThan3.IN31
+pisoActual[1] => LessThan4.IN63
+pisoActual[1] => LessThan5.IN63
+pisoActual[2] => Add0.IN4
+pisoActual[2] => Add2.IN4
+pisoActual[2] => LessThan2.IN30
+pisoActual[2] => LessThan3.IN30
+pisoActual[2] => LessThan4.IN62
+pisoActual[2] => LessThan5.IN62
+subir <= subir.DB_MAX_OUTPUT_PORT_TYPE
+bajar <= bajar.DB_MAX_OUTPUT_PORT_TYPE
+quieto <= quieto.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlAscensor:U2|enableAscensor:U2
+sobreCarga => process_0.IN0
+estadoPuerta => process_0.IN1
+anomalia => process_0.IN1
+cambiandoEstado => process_0.IN1
+enable <= process_0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|detectorPiso:U3
+clk => div_frec:U1.clk
+subir => actualizarPiso:U4.subir
+bajar => actualizarPiso:U4.bajar
+quieto => actualizarPiso:U4.quieto
+pet1[0] => comparadorNbits:U5.B[0]
+pet1[1] => comparadorNbits:U5.B[1]
+pet1[2] => comparadorNbits:U5.B[2]
+pet2[0] => comparadorNbits:U6.B[0]
+pet2[1] => comparadorNbits:U6.B[1]
+pet2[2] => comparadorNbits:U6.B[2]
+pisoActual[0] <= actualizarPiso:U4.pisoActual[0]
+pisoActual[1] <= actualizarPiso:U4.pisoActual[1]
+pisoActual[2] <= actualizarPiso:U4.pisoActual[2]
+reset1 <= comparadorNbits:U5.AiguB
+reset2 <= comparadorNbits:U6.AiguB
+
+
+|proyectoAscensor|detectorPiso:U3|div_frec:U1
+clk => out2~reg0.CLK
+clk => out1~reg0.CLK
+clk => count1[0].CLK
+clk => count1[1].CLK
+clk => count1[2].CLK
+clk => count2[0].CLK
+clk => count2[1].CLK
+clk => count2[2].CLK
+clk => count2[3].CLK
+clk => count2[4].CLK
+clk => count2[5].CLK
+clk => count2[6].CLK
+clk => count2[7].CLK
+clk => count2[8].CLK
+clk => count2[9].CLK
+clk => count2[10].CLK
+clk => count2[11].CLK
+clk => count2[12].CLK
+clk => count2[13].CLK
+clk => count2[14].CLK
+clk => count2[15].CLK
+clk => count2[16].CLK
+clk => count2[17].CLK
+clk => count2[18].CLK
+clk => count2[19].CLK
+clk => count2[20].CLK
+clk => count2[21].CLK
+clk => count2[22].CLK
+clk => count2[23].CLK
+clk => count2[24].CLK
+out1 <= out1~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out2 <= out2~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|detectorPiso:U3|contadorGenerico:U2
+clk => contador[0].CLK
+clk => contador[1].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+enable => contador[0].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN1
+valorRes[1] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|detectorPiso:U3|comparadorNbits:U3
+A[0] => Equal0.IN2
+A[0] => LessThan0.IN3
+A[1] => Equal0.IN1
+A[1] => LessThan0.IN2
+A[2] => Equal0.IN0
+A[2] => LessThan0.IN1
+B[0] => Equal0.IN5
+B[0] => LessThan0.IN6
+B[1] => Equal0.IN4
+B[1] => LessThan0.IN5
+B[2] => Equal0.IN3
+B[2] => LessThan0.IN4
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|detectorPiso:U3|actualizarPiso:U4
+clk => piso[0].CLK
+clk => piso[1].CLK
+clk => piso[2].CLK
+subir => piso.OUTPUTSELECT
+subir => piso.OUTPUTSELECT
+subir => piso.OUTPUTSELECT
+bajar => piso.OUTPUTSELECT
+bajar => piso.OUTPUTSELECT
+bajar => piso.OUTPUTSELECT
+quieto => piso[0].ENA
+quieto => piso[1].ENA
+quieto => piso[2].ENA
+pisoActual[0] <= piso[0].DB_MAX_OUTPUT_PORT_TYPE
+pisoActual[1] <= piso[1].DB_MAX_OUTPUT_PORT_TYPE
+pisoActual[2] <= piso[2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|detectorPiso:U3|comparadorNbits:U5
+A[0] => Equal0.IN2
+A[0] => LessThan0.IN3
+A[1] => Equal0.IN1
+A[1] => LessThan0.IN2
+A[2] => Equal0.IN0
+A[2] => LessThan0.IN1
+B[0] => Equal0.IN5
+B[0] => LessThan0.IN6
+B[1] => Equal0.IN4
+B[1] => LessThan0.IN5
+B[2] => Equal0.IN3
+B[2] => LessThan0.IN4
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|detectorPiso:U3|comparadorNbits:U6
+A[0] => Equal0.IN2
+A[0] => LessThan0.IN3
+A[1] => Equal0.IN1
+A[1] => LessThan0.IN2
+A[2] => Equal0.IN0
+A[2] => LessThan0.IN1
+B[0] => Equal0.IN5
+B[0] => LessThan0.IN6
+B[1] => Equal0.IN4
+B[1] => LessThan0.IN5
+B[2] => Equal0.IN3
+B[2] => LessThan0.IN4
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4
+clk => controlContadores:U1.clk
+clk => capturarLlego:U2.clk
+clk => capturarLlego:U7.clk
+clk => capturarLlego:U8.clk
+clk => div_frec:U9.clk
+llego => capturarLlego:U2.llego
+anomalia => controlContadores:U1.anomalia
+anomalia => spuerta1.IN0
+anomalia => spuerta2.IN1
+sobreCarga => spuerta1.IN1
+sobreCarga => controlContadores:U1.sobreCarga
+cuenta1[0] <= contadorGenerico:U3.cuenta[0]
+cuenta1[1] <= contadorGenerico:U3.cuenta[1]
+cuenta1[2] <= contadorGenerico:U3.cuenta[2]
+cuenta1[3] <= contadorGenerico:U3.cuenta[3]
+cuenta1[4] <= contadorGenerico:U3.cuenta[4]
+cuenta1[5] <= contadorGenerico:U3.cuenta[5]
+cuenta2[0] <= contadorGenerico:U4.cuenta[0]
+cuenta2[1] <= contadorGenerico:U4.cuenta[1]
+cuenta2[2] <= contadorGenerico:U4.cuenta[2]
+cuenta2[3] <= contadorGenerico:U4.cuenta[3]
+cuenta2[4] <= contadorGenerico:U4.cuenta[4]
+cuenta2[5] <= contadorGenerico:U4.cuenta[5]
+cambiandoEstado <= capturarLlego:U2.llego_capturado
+estadoPuerta <= estadoPuerta.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|controlContadores:U1
+clk => clear_reg.CLK
+clk => reset2_reg.CLK
+clk => reset1_reg.CLK
+clk => stage[0].CLK
+clk => stage[1].CLK
+llego => stage.OUTPUTSELECT
+llego => stage.OUTPUTSELECT
+llego => reset1_reg.OUTPUTSELECT
+llego => reset2_reg.OUTPUTSELECT
+llego => process_0.IN0
+anomalia => process_0.IN0
+sobreCarga => process_0.IN1
+llegoa10 => process_0.IN1
+llegoa45 => process_0.IN1
+reset1 <= reset1_reg.DB_MAX_OUTPUT_PORT_TYPE
+reset2 <= reset2_reg.DB_MAX_OUTPUT_PORT_TYPE
+clear <= clear_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|capturarLlego:U2
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|contadorGenerico:U3
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+reset => contador[2].ACLR
+reset => contador[3].ACLR
+reset => contador[4].ACLR
+reset => contador[5].ACLR
+enable => contador[0].ENA
+enable => contador[5].ENA
+enable => contador[4].ENA
+enable => contador[3].ENA
+enable => contador[2].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN5
+valorRes[1] => Equal0.IN4
+valorRes[2] => Equal0.IN3
+valorRes[3] => Equal0.IN2
+valorRes[4] => Equal0.IN1
+valorRes[5] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= contador[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= contador[3].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[4] <= contador[4].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[5] <= contador[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|contadorGenerico:U4
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+reset => contador[2].ACLR
+reset => contador[3].ACLR
+reset => contador[4].ACLR
+reset => contador[5].ACLR
+enable => contador[0].ENA
+enable => contador[5].ENA
+enable => contador[4].ENA
+enable => contador[3].ENA
+enable => contador[2].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN5
+valorRes[1] => Equal0.IN4
+valorRes[2] => Equal0.IN3
+valorRes[3] => Equal0.IN2
+valorRes[4] => Equal0.IN1
+valorRes[5] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= contador[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= contador[3].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[4] <= contador[4].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[5] <= contador[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|comparadorNbits:U5
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|comparadorNbits:U6
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|capturarLlego:U7
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|capturarLlego:U8
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|controlPuerta:U4|div_frec:U9
+clk => out2~reg0.CLK
+clk => out1~reg0.CLK
+clk => count1[0].CLK
+clk => count1[1].CLK
+clk => count1[2].CLK
+clk => count2[0].CLK
+clk => count2[1].CLK
+clk => count2[2].CLK
+clk => count2[3].CLK
+clk => count2[4].CLK
+clk => count2[5].CLK
+clk => count2[6].CLK
+clk => count2[7].CLK
+clk => count2[8].CLK
+clk => count2[9].CLK
+clk => count2[10].CLK
+clk => count2[11].CLK
+clk => count2[12].CLK
+clk => count2[13].CLK
+clk => count2[14].CLK
+clk => count2[15].CLK
+clk => count2[16].CLK
+clk => count2[17].CLK
+clk => count2[18].CLK
+clk => count2[19].CLK
+clk => count2[20].CLK
+clk => count2[21].CLK
+clk => count2[22].CLK
+clk => count2[23].CLK
+clk => count2[24].CLK
+out1 <= out1~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out2 <= out2~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|cantpersonas:U5
+clk => contadorPersonas:U1.clk
+perEn => contadorPersonas:U1.personaEntra
+perSal => contadorPersonas:U1.personaSale
+estadoPuerta => contadorPersonas:U1.estadoPuerta
+sobreCarga <= comparadorNbits:U2.AmayB
+cantPer[0] <= contadorPersonas:U1.cuenta[0]
+cantPer[1] <= contadorPersonas:U1.cuenta[1]
+cantPer[2] <= contadorPersonas:U1.cuenta[2]
+cantPer[3] <= contadorPersonas:U1.cuenta[3]
+
+
+|proyectoAscensor|cantpersonas:U5|contadorPersonas:U1
+clk => cnt[0].CLK
+clk => cnt[1].CLK
+clk => cnt[2].CLK
+clk => cnt[3].CLK
+estadoPuerta => cnt[3].IN0
+estadoPuerta => cnt[0].ENA
+estadoPuerta => cnt[3].ENA
+estadoPuerta => cnt[2].ENA
+estadoPuerta => cnt[1].ENA
+reset => cnt[3].IN1
+personaEntra => process_0.IN0
+personaEntra => process_0.IN0
+personaSale => process_0.IN1
+personaSale => process_0.IN1
+cuenta[0] <= cnt[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= cnt[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= cnt[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= cnt[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|cantpersonas:U5|comparadorNbits:U2
+A[0] => Equal0.IN3
+A[0] => LessThan0.IN4
+A[1] => Equal0.IN2
+A[1] => LessThan0.IN3
+A[2] => Equal0.IN1
+A[2] => LessThan0.IN2
+A[3] => Equal0.IN0
+A[3] => LessThan0.IN1
+B[0] => Equal0.IN7
+B[0] => LessThan0.IN8
+B[1] => Equal0.IN6
+B[1] => LessThan0.IN7
+B[2] => Equal0.IN5
+B[2] => LessThan0.IN6
+B[3] => Equal0.IN4
+B[3] => LessThan0.IN5
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|div_frec:U6
+clk => out2~reg0.CLK
+clk => out1~reg0.CLK
+clk => count1[0].CLK
+clk => count1[1].CLK
+clk => count1[2].CLK
+clk => count2[0].CLK
+clk => count2[1].CLK
+clk => count2[2].CLK
+clk => count2[3].CLK
+clk => count2[4].CLK
+clk => count2[5].CLK
+clk => count2[6].CLK
+clk => count2[7].CLK
+clk => count2[8].CLK
+clk => count2[9].CLK
+clk => count2[10].CLK
+clk => count2[11].CLK
+clk => count2[12].CLK
+clk => count2[13].CLK
+clk => count2[14].CLK
+clk => count2[15].CLK
+clk => count2[16].CLK
+clk => count2[17].CLK
+clk => count2[18].CLK
+clk => count2[19].CLK
+clk => count2[20].CLK
+clk => count2[21].CLK
+clk => count2[22].CLK
+clk => count2[23].CLK
+clk => count2[24].CLK
+out1 <= out1~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out2 <= out2~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|alarmas:U7
+sobreCarga => masde10.DATAIN
+estadoPuerta => luz.IN1
+cantPer[0] => comparadorNbits:U1.A[0]
+cantPer[1] => comparadorNbits:U1.A[1]
+cantPer[2] => comparadorNbits:U1.A[2]
+cantPer[3] => comparadorNbits:U1.A[3]
+cuentaAscensor1[0] => comparadorNbits:U2.A[0]
+cuentaAscensor1[1] => comparadorNbits:U2.A[1]
+cuentaAscensor1[2] => comparadorNbits:U2.A[2]
+cuentaAscensor1[3] => comparadorNbits:U2.A[3]
+cuentaAscensor1[4] => comparadorNbits:U2.A[4]
+cuentaAscensor1[5] => comparadorNbits:U2.A[5]
+cuentaAscensor2[0] => comparadorNbits:U3.A[0]
+cuentaAscensor2[1] => comparadorNbits:U3.A[1]
+cuentaAscensor2[2] => comparadorNbits:U3.A[2]
+cuentaAscensor2[3] => comparadorNbits:U3.A[3]
+cuentaAscensor2[4] => comparadorNbits:U3.A[4]
+cuentaAscensor2[5] => comparadorNbits:U3.A[5]
+sensorEnergia => anomaliaEnSon.DATAIN
+sensorEnergia => anomaliaEn.DATAIN
+masde10 <= sobreCarga.DB_MAX_OUTPUT_PORT_TYPE
+abrirCerrarSon <= abrirCerrarSon.DB_MAX_OUTPUT_PORT_TYPE
+anomaliaEn <= sensorEnergia.DB_MAX_OUTPUT_PORT_TYPE
+anomaliaEnSon <= sensorEnergia.DB_MAX_OUTPUT_PORT_TYPE
+luz <= luz.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|alarmas:U7|comparadorNbits:U1
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|alarmas:U7|comparadorNbits:U2
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|alarmas:U7|comparadorNbits:U3
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|deco7seg:H1
+A => Mux0.IN16
+A => Mux1.IN16
+A => Mux2.IN16
+A => Mux3.IN16
+A => Mux4.IN16
+A => Mux5.IN16
+A => Mux6.IN16
+B => Mux0.IN17
+B => Mux1.IN17
+B => Mux2.IN17
+B => Mux3.IN17
+B => Mux4.IN17
+B => Mux5.IN17
+B => Mux6.IN17
+C => Mux0.IN18
+C => Mux1.IN18
+C => Mux2.IN18
+C => Mux3.IN18
+C => Mux4.IN18
+C => Mux5.IN18
+C => Mux6.IN18
+D => Mux0.IN19
+D => Mux1.IN19
+D => Mux2.IN19
+D => Mux3.IN19
+D => Mux4.IN19
+D => Mux5.IN19
+D => Mux6.IN19
+a1 <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b1 <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+c1 <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+d1 <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+e1 <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+f1 <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+g1 <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|decun:H2
+sum[0] => Div0.IN36
+sum[0] => Mod0.IN63
+sum[1] => Div0.IN35
+sum[1] => Mod0.IN62
+sum[2] => Div0.IN34
+sum[2] => Mod0.IN61
+sum[3] => Div0.IN33
+sum[3] => Mod0.IN60
+sum[4] => Div0.IN32
+sum[4] => Mod0.IN59
+dec[0] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+dec[1] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+dec[2] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+dec[3] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+un[0] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+un[1] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+un[2] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+un[3] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|deco7seg:H3
+A => Mux0.IN16
+A => Mux1.IN16
+A => Mux2.IN16
+A => Mux3.IN16
+A => Mux4.IN16
+A => Mux5.IN16
+A => Mux6.IN16
+B => Mux0.IN17
+B => Mux1.IN17
+B => Mux2.IN17
+B => Mux3.IN17
+B => Mux4.IN17
+B => Mux5.IN17
+B => Mux6.IN17
+C => Mux0.IN18
+C => Mux1.IN18
+C => Mux2.IN18
+C => Mux3.IN18
+C => Mux4.IN18
+C => Mux5.IN18
+C => Mux6.IN18
+D => Mux0.IN19
+D => Mux1.IN19
+D => Mux2.IN19
+D => Mux3.IN19
+D => Mux4.IN19
+D => Mux5.IN19
+D => Mux6.IN19
+a1 <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b1 <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+c1 <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+d1 <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+e1 <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+f1 <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+g1 <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|proyectoAscensor|deco7seg:H4
+A => Mux0.IN16
+A => Mux1.IN16
+A => Mux2.IN16
+A => Mux3.IN16
+A => Mux4.IN16
+A => Mux5.IN16
+A => Mux6.IN16
+B => Mux0.IN17
+B => Mux1.IN17
+B => Mux2.IN17
+B => Mux3.IN17
+B => Mux4.IN17
+B => Mux5.IN17
+B => Mux6.IN17
+C => Mux0.IN18
+C => Mux1.IN18
+C => Mux2.IN18
+C => Mux3.IN18
+C => Mux4.IN18
+C => Mux5.IN18
+C => Mux6.IN18
+D => Mux0.IN19
+D => Mux1.IN19
+D => Mux2.IN19
+D => Mux3.IN19
+D => Mux4.IN19
+D => Mux5.IN19
+D => Mux6.IN19
+a1 <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b1 <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+c1 <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+d1 <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+e1 <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+f1 <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+g1 <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,55 @@
+|cantpersonas
+clk => contadorPersonas:U1.clk
+perEn => contadorPersonas:U1.personaEntra
+perSal => contadorPersonas:U1.personaSale
+estadoPuerta => contadorPersonas:U1.estadoPuerta
+sobreCarga <= comparadorNbits:U2.AmayB
+cantPer[0] <= contadorPersonas:U1.cuenta[0]
+cantPer[1] <= contadorPersonas:U1.cuenta[1]
+cantPer[2] <= contadorPersonas:U1.cuenta[2]
+cantPer[3] <= contadorPersonas:U1.cuenta[3]
+
+
+|cantpersonas|contadorPersonas:U1
+clk => cnt[0].CLK
+clk => cnt[1].CLK
+clk => cnt[2].CLK
+clk => cnt[3].CLK
+estadoPuerta => cnt[3].IN0
+estadoPuerta => cnt[0].ENA
+estadoPuerta => cnt[3].ENA
+estadoPuerta => cnt[2].ENA
+estadoPuerta => cnt[1].ENA
+reset => cnt[3].IN1
+personaEntra => process_0.IN0
+personaEntra => process_0.IN0
+personaSale => process_0.IN1
+personaSale => process_0.IN1
+cuenta[0] <= cnt[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= cnt[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= cnt[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= cnt[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|cantpersonas|comparadorNbits:U2
+A[0] => Equal0.IN3
+A[0] => LessThan0.IN4
+A[1] => Equal0.IN2
+A[1] => LessThan0.IN3
+A[2] => Equal0.IN1
+A[2] => LessThan0.IN2
+A[3] => Equal0.IN0
+A[3] => LessThan0.IN1
+B[0] => Equal0.IN7
+B[0] => LessThan0.IN8
+B[1] => Equal0.IN6
+B[1] => LessThan0.IN7
+B[2] => Equal0.IN5
+B[2] => LessThan0.IN6
+B[3] => Equal0.IN4
+B[3] => LessThan0.IN5
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,41 @@
+# do decun.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module decun
+# 
+# Top level modules:
+# 	decun
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module decun_vlg_sample_tst
+# -- Compiling module decun_vlg_check_tst
+# -- Compiling module decun_vlg_vec_tst
+# 
+# Top level modules:
+# 	decun_vlg_vec_tst
+# vsim -L cycloneiii_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -voptargs=\"+acc\" -t 1ps -novopt work.decun_vlg_vec_tst 
+# Loading work.decun_vlg_vec_tst
+# Loading work.decun
+# Loading cycloneiii_ver.cycloneiii_io_obuf
+# Loading cycloneiii_ver.cycloneiii_io_ibuf
+# Loading cycloneiii_ver.cycloneiii_lcell_comb
+# Loading work.decun_vlg_sample_tst
+# Loading work.decun_vlg_check_tst
+# ERROR! Vector Mismatch for output port dec[0] :: @time = 1000000.000 ps
+#      Expected value = 0000
+#      Real value = 0001
+# ERROR! Vector Mismatch for output port un[0] :: @time = 1000000.000 ps
+#      Expected value = 0000
+#      Real value = 1001
+# ERROR! Vector Mismatch for output port un[3] :: @time = 1000000.000 ps
+#      Expected value = 0000
+#      Real value = 1001
+# ERROR! Vector Mismatch for output port dec[1] :: @time = 1050000.000 ps
+#      Expected value = 0000
+#      Real value = 0010
+# ERROR! Vector Mismatch for output port un[1] :: @time = 1150000.000 ps
+#      Expected value = 0000
+#      Real value = 0010
+#           5 mismatched vectors : Simulation failed !
+# ** Note: $finish    : decun.vwf.vt(289)
+#    Time: 1200 ns  Iteration: 0  Instance: /decun_vlg_vec_tst/tb_out

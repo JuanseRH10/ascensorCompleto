@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\movimientoAscensor\simulation\qsim
+vmovimientoAscensor
+Z1 !s100 k7<mzkO=52RLLLgd>;efg2
+Z2 IUoRhiJJWTON7kXFc4mjkg3
+Z3 Ven_5L0]6GY>68E]2bn[mZ3
+Z4 dC:\altera\13.1\movimientoAscensor\simulation\qsim
+Z5 w1743395182
+Z6 8movimientoAscensor.vo
+Z7 FmovimientoAscensor.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|movimientoAscensor.vo|
+Z10 o-work work -O0
+Z11 nmovimiento@ascensor
+!i10b 1
+!s85 0
+Z12 !s108 1743395183.133000
+Z13 !s107 movimientoAscensor.vo|
+!s101 -O0
+vmovimientoAscensor_vlg_check_tst
+!i10b 1
+Z14 !s100 am<L86d[j_]K`GW]gF;o^0
+Z15 Ib5UNAn5792:2zC18VT:Z50
+Z16 V;ADRah3MQAS2k]1RGEYOP2
+R4
+Z17 w1743395181
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 63
+R8
+r1
+!s85 0
+31
+Z20 !s108 1743395183.189000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+Z23 nmovimiento@ascensor_vlg_check_tst
+vmovimientoAscensor_vlg_sample_tst
+!i10b 1
+Z24 !s100 ^ATEGT07Cll>cmZg=bz_?0
+Z25 I_l941N0YUQ@I_lkAGd25b1
+Z26 VBfaNX^V;=aAG>NnLAV4aF1
+R4
+R17
+R18
+R19
+L0 29
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z27 nmovimiento@ascensor_vlg_sample_tst
+vmovimientoAscensor_vlg_vec_tst
+!i10b 1
+!s100 l5`ia3YiKBa[naU2GeS2>0
+IVG[PJB<oN6UA6k?f]n^0>2
+Z28 V=`TRb0:US<6zUYa=Fkl931
+R4
+R17
+R18
+R19
+Z29 L0 212
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z30 nmovimiento@ascensor_vlg_vec_tst

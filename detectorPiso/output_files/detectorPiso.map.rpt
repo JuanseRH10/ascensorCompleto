@@ -1,5 +1,5 @@
 Analysis & Synthesis report for detectorPiso
-Thu Mar 27 14:31:18 2025
+Mon Mar 31 11:56:25 2025
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -13,11 +13,21 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Logic Cells Representing Combinational Loops
+  8. Registers Removed During Synthesis
   9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: contadorGenerico:U2
+ 13. Parameter Settings for User Entity Instance: comparadorNbits:U3
+ 14. Parameter Settings for User Entity Instance: comparadorNbits:U5
+ 15. Parameter Settings for User Entity Instance: comparadorNbits:U6
+ 16. Port Connectivity Checks: "comparadorNbits:U6"
+ 17. Port Connectivity Checks: "comparadorNbits:U5"
+ 18. Port Connectivity Checks: "comparadorNbits:U3"
+ 19. Port Connectivity Checks: "contadorGenerico:U2"
+ 20. Port Connectivity Checks: "div_frec:U1"
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
 
 
 
@@ -43,16 +53,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Mar 27 14:31:18 2025      ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 31 11:56:25 2025      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; detectorPiso                               ;
 ; Top-level Entity Name              ; detectorPiso                               ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 11                                         ;
-;     Total combinational functions  ; 11                                         ;
-;     Dedicated logic registers      ; 0                                          ;
-; Total registers                    ; 0                                          ;
-; Total pins                         ; 13                                         ;
+; Total logic elements               ; 58                                         ;
+;     Total combinational functions  ; 58                                         ;
+;     Dedicated logic registers      ; 30                                         ;
+; Total registers                    ; 30                                         ;
+; Total pins                         ; 15                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -164,66 +174,73 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                             ;
-+----------------------------------+-----------------+-----------------+---------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                      ; Library ;
-+----------------------------------+-----------------+-----------------+---------------------------------------------------+---------+
-; detectorPiso.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/VHDL/detectorPiso/detectorPiso.vhd ;         ;
-+----------------------------------+-----------------+-----------------+---------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                         ;
++------------------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path         ; Used in Netlist ; File Type       ; File Name with Absolute Path                                          ; Library ;
++------------------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+; ../div_frec/div_frec.vhd                 ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/div_frec/div_frec.vhd                 ;         ;
+; ../contadorGenerico/contadorGenerico.vhd ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/contadorGenerico/contadorGenerico.vhd ;         ;
+; ../comparadorNbits/comparadorNbits.vhd   ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/comparadorNbits/comparadorNbits.vhd   ;         ;
+; ../actualizarPiso/actualizarPiso.vhd     ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/actualizarPiso/actualizarPiso.vhd     ;         ;
+; detectorPiso.vhd                         ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/detectorPiso/detectorPiso.vhd         ;         ;
++------------------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 11          ;
-;                                             ;             ;
-; Total combinational functions               ; 11          ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 6           ;
-;     -- 3 input functions                    ; 5           ;
-;     -- <=2 input functions                  ; 0           ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 11          ;
-;     -- arithmetic mode                      ; 0           ;
-;                                             ;             ;
-; Total registers                             ; 0           ;
-;     -- Dedicated logic registers            ; 0           ;
-;     -- I/O registers                        ; 0           ;
-;                                             ;             ;
-; I/O pins                                    ; 13          ;
-; Embedded Multiplier 9-bit elements          ; 0           ;
-; Maximum fan-out node                        ; nuevoPiso~6 ;
-; Maximum fan-out                             ; 8           ;
-; Total fan-out                               ; 57          ;
-; Average fan-out                             ; 1.54        ;
-+---------------------------------------------+-------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 58        ;
+;                                             ;           ;
+; Total combinational functions               ; 58        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 26        ;
+;     -- 3 input functions                    ; 4         ;
+;     -- <=2 input functions                  ; 28        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 34        ;
+;     -- arithmetic mode                      ; 24        ;
+;                                             ;           ;
+; Total registers                             ; 30        ;
+;     -- Dedicated logic registers            ; 30        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 15        ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 26        ;
+; Total fan-out                               ; 251       ;
+; Average fan-out                             ; 2.13      ;
++---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |detectorPiso              ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |detectorPiso       ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                       ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
+; |detectorPiso              ; 58 (0)            ; 30 (0)       ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |detectorPiso                     ; work         ;
+;    |actualizarPiso:U4|     ; 4 (4)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |detectorPiso|actualizarPiso:U4   ; work         ;
+;    |comparadorNbits:U3|    ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |detectorPiso|comparadorNbits:U3  ; work         ;
+;    |comparadorNbits:U5|    ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |detectorPiso|comparadorNbits:U5  ; work         ;
+;    |comparadorNbits:U6|    ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |detectorPiso|comparadorNbits:U6  ; work         ;
+;    |contadorGenerico:U2|   ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |detectorPiso|contadorGenerico:U2 ; work         ;
+;    |div_frec:U1|           ; 48 (48)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |detectorPiso|div_frec:U1         ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------+
-; Logic Cells Representing Combinational Loops               ;
-+--------------------------------------------------------+---+
-; Logic Cell Name                                        ;   ;
-+--------------------------------------------------------+---+
-; pisoActual[0]~0                                        ;   ;
-; pisoActual[1]~1                                        ;   ;
-; pisoActual[2]~2                                        ;   ;
-; Number of logic cells representing combinational loops ; 3 ;
-+--------------------------------------------------------+---+
-Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; contadorGenerico:U2|contador[1]       ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 1 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -231,23 +248,127 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 30    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 2     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |detectorPiso|nuevoPiso    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; actualizarPiso:U4|piso[0]              ; 6       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |detectorPiso|actualizarPiso:U4|piso[1] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: contadorGenerico:U2 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; n              ; 2     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparadorNbits:U3 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; n              ; 3     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparadorNbits:U5 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; n              ; 3     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparadorNbits:U6 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; n              ; 3     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "comparadorNbits:U6"                                                                  ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; amayb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; amenb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "comparadorNbits:U5"                                                                  ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; amayb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; amenb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "comparadorNbits:U3"                                                                    ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; a[2]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[2..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[0]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; amayb   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; amenb   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "contadorGenerico:U2" ;
++-------------+-------+----------+----------------+
+; Port        ; Type  ; Severity ; Details        ;
++-------------+-------+----------+----------------+
+; reset       ; Input ; Info     ; Stuck at GND   ;
+; enable      ; Input ; Info     ; Stuck at VCC   ;
+; valorres[1] ; Input ; Info     ; Stuck at GND   ;
+; valorres[0] ; Input ; Info     ; Stuck at VCC   ;
++-------------+-------+----------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "div_frec:U1"                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; out1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -265,25 +386,48 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Mar 27 14:31:17 2025
+    Info: Processing started: Mon Mar 31 11:56:24 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off detectorPiso -c detectorPiso
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 10 of the 10 physical processors detected instead.
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/div_frec/div_frec.vhd
+    Info (12022): Found design unit 1: div_frec-arch_div_frec
+    Info (12023): Found entity 1: div_frec
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/contadorgenerico/contadorgenerico.vhd
+    Info (12022): Found design unit 1: contadorGenerico-arch_contadorGenerico
+    Info (12023): Found entity 1: contadorGenerico
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/comparadornbits/comparadornbits.vhd
+    Info (12022): Found design unit 1: comparadorNbits-arch_comparadorNbits
+    Info (12023): Found entity 1: comparadorNbits
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/actualizarpiso/actualizarpiso.vhd
+    Info (12022): Found design unit 1: actualizarPiso-arch_actualizarPiso
+    Info (12023): Found entity 1: actualizarPiso
 Info (12021): Found 2 design units, including 1 entities, in source file detectorpiso.vhd
     Info (12022): Found design unit 1: detectorPiso-arch_detectorPiso
     Info (12023): Found entity 1: detectorPiso
 Info (12127): Elaborating entity "detectorPiso" for the top level hierarchy
-Warning (10631): VHDL Process Statement warning at detectorPiso.vhd(23): inferring latch(es) for signal or variable "piso", which holds its previous value in one or more paths through the process
+Warning (10036): Verilog HDL or VHDL warning at detectorPiso.vhd(25): object "sin" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at detectorPiso.vhd(25): object "sin2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at detectorPiso.vhd(25): object "sin3" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at detectorPiso.vhd(25): object "sin4" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at detectorPiso.vhd(25): object "sin5" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at detectorPiso.vhd(25): object "sin6" assigned a value but never read
+Info (12128): Elaborating entity "div_frec" for hierarchy "div_frec:U1"
+Info (12128): Elaborating entity "contadorGenerico" for hierarchy "contadorGenerico:U2"
+Info (12128): Elaborating entity "comparadorNbits" for hierarchy "comparadorNbits:U3"
+Info (12128): Elaborating entity "actualizarPiso" for hierarchy "actualizarPiso:U4"
 Info (286030): Timing-Driven Synthesis is running
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "comparadorNbits:U3|Equal0"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 24 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 8 input pins
+Info (21057): Implemented 86 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
     Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 11 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4712 megabytes
-    Info: Processing ended: Thu Mar 27 14:31:19 2025
-    Info: Elapsed time: 00:00:02
+    Info (21061): Implemented 71 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4708 megabytes
+    Info: Processing ended: Mon Mar 31 11:56:25 2025
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 

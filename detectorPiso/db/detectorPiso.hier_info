@@ -1,20 +1,138 @@
 |detectorPiso
-subir => nuevoPiso.OUTPUTSELECT
-subir => nuevoPiso.OUTPUTSELECT
-subir => nuevoPiso.OUTPUTSELECT
-bajar => nuevoPiso.OUTPUTSELECT
-bajar => nuevoPiso.OUTPUTSELECT
-bajar => nuevoPiso.OUTPUTSELECT
-peticion1[0] => Equal0.IN2
-peticion1[1] => Equal0.IN1
-peticion1[2] => Equal0.IN0
-peticion2[0] => Equal1.IN2
-peticion2[1] => Equal1.IN1
-peticion2[2] => Equal1.IN0
-pisoActual[0] <= pisoActual[0].DB_MAX_OUTPUT_PORT_TYPE
-pisoActual[1] <= pisoActual[1].DB_MAX_OUTPUT_PORT_TYPE
-pisoActual[2] <= pisoActual[2].DB_MAX_OUTPUT_PORT_TYPE
-reset1 <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
-reset2 <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+clk => div_frec:U1.clk
+subir => actualizarPiso:U4.subir
+bajar => actualizarPiso:U4.bajar
+quieto => actualizarPiso:U4.quieto
+pet1[0] => comparadorNbits:U5.B[0]
+pet1[1] => comparadorNbits:U5.B[1]
+pet1[2] => comparadorNbits:U5.B[2]
+pet2[0] => comparadorNbits:U6.B[0]
+pet2[1] => comparadorNbits:U6.B[1]
+pet2[2] => comparadorNbits:U6.B[2]
+pisoActual[0] <= actualizarPiso:U4.pisoActual[0]
+pisoActual[1] <= actualizarPiso:U4.pisoActual[1]
+pisoActual[2] <= actualizarPiso:U4.pisoActual[2]
+reset1 <= comparadorNbits:U5.AiguB
+reset2 <= comparadorNbits:U6.AiguB
+
+
+|detectorPiso|div_frec:U1
+clk => out2~reg0.CLK
+clk => out1~reg0.CLK
+clk => count1[0].CLK
+clk => count1[1].CLK
+clk => count1[2].CLK
+clk => count2[0].CLK
+clk => count2[1].CLK
+clk => count2[2].CLK
+clk => count2[3].CLK
+clk => count2[4].CLK
+clk => count2[5].CLK
+clk => count2[6].CLK
+clk => count2[7].CLK
+clk => count2[8].CLK
+clk => count2[9].CLK
+clk => count2[10].CLK
+clk => count2[11].CLK
+clk => count2[12].CLK
+clk => count2[13].CLK
+clk => count2[14].CLK
+clk => count2[15].CLK
+clk => count2[16].CLK
+clk => count2[17].CLK
+clk => count2[18].CLK
+clk => count2[19].CLK
+clk => count2[20].CLK
+clk => count2[21].CLK
+clk => count2[22].CLK
+clk => count2[23].CLK
+clk => count2[24].CLK
+out1 <= out1~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out2 <= out2~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|detectorPiso|contadorGenerico:U2
+clk => contador[0].CLK
+clk => contador[1].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+enable => contador[0].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN1
+valorRes[1] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|detectorPiso|comparadorNbits:U3
+A[0] => Equal0.IN2
+A[0] => LessThan0.IN3
+A[1] => Equal0.IN1
+A[1] => LessThan0.IN2
+A[2] => Equal0.IN0
+A[2] => LessThan0.IN1
+B[0] => Equal0.IN5
+B[0] => LessThan0.IN6
+B[1] => Equal0.IN4
+B[1] => LessThan0.IN5
+B[2] => Equal0.IN3
+B[2] => LessThan0.IN4
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|detectorPiso|actualizarPiso:U4
+clk => piso[0].CLK
+clk => piso[1].CLK
+clk => piso[2].CLK
+subir => piso.OUTPUTSELECT
+subir => piso.OUTPUTSELECT
+subir => piso.OUTPUTSELECT
+bajar => piso.OUTPUTSELECT
+bajar => piso.OUTPUTSELECT
+bajar => piso.OUTPUTSELECT
+quieto => piso[0].ENA
+quieto => piso[1].ENA
+quieto => piso[2].ENA
+pisoActual[0] <= piso[0].DB_MAX_OUTPUT_PORT_TYPE
+pisoActual[1] <= piso[1].DB_MAX_OUTPUT_PORT_TYPE
+pisoActual[2] <= piso[2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|detectorPiso|comparadorNbits:U5
+A[0] => Equal0.IN2
+A[0] => LessThan0.IN3
+A[1] => Equal0.IN1
+A[1] => LessThan0.IN2
+A[2] => Equal0.IN0
+A[2] => LessThan0.IN1
+B[0] => Equal0.IN5
+B[0] => LessThan0.IN6
+B[1] => Equal0.IN4
+B[1] => LessThan0.IN5
+B[2] => Equal0.IN3
+B[2] => LessThan0.IN4
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|detectorPiso|comparadorNbits:U6
+A[0] => Equal0.IN2
+A[0] => LessThan0.IN3
+A[1] => Equal0.IN1
+A[1] => LessThan0.IN2
+A[2] => Equal0.IN0
+A[2] => LessThan0.IN1
+B[0] => Equal0.IN5
+B[0] => LessThan0.IN6
+B[1] => Equal0.IN4
+B[1] => LessThan0.IN5
+B[2] => Equal0.IN3
+B[2] => LessThan0.IN4
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
 
 

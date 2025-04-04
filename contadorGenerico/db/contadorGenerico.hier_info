@@ -1,0 +1,33 @@
+|contadorGenerico
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+reset => contador[2].ACLR
+reset => contador[3].ACLR
+reset => contador[4].ACLR
+reset => contador[5].ACLR
+enable => contador[0].ENA
+enable => contador[5].ENA
+enable => contador[4].ENA
+enable => contador[3].ENA
+enable => contador[2].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN5
+valorRes[1] => Equal0.IN4
+valorRes[2] => Equal0.IN3
+valorRes[3] => Equal0.IN2
+valorRes[4] => Equal0.IN1
+valorRes[5] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= contador[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= contador[3].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[4] <= contador[4].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[5] <= contador[5].DB_MAX_OUTPUT_PORT_TYPE
+
+

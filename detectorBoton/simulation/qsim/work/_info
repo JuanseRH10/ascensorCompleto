@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\detectorBoton\simulation\qsim
+vdetectorBoton
+Z1 !s100 @1e;Z1h<jgCoN7lEiWQUD0
+Z2 I7V[m_YSO^63Xbjj>mn;^U2
+Z3 Vo3;7CP@RDlPz5c7dHzNjL1
+Z4 dC:\altera\13.1\detectorBoton\simulation\qsim
+Z5 w1743386610
+Z6 8detectorBoton.vo
+Z7 FdetectorBoton.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|detectorBoton.vo|
+Z10 o-work work -O0
+Z11 ndetector@boton
+!i10b 1
+!s85 0
+Z12 !s108 1743386611.118000
+Z13 !s107 detectorBoton.vo|
+!s101 -O0
+vdetectorBoton_vlg_check_tst
+!i10b 1
+Z14 !s100 49HmdNTQCIhRU9GZY76io3
+Z15 Id7RLVa@RW>SGBHHB2;f=I1
+Z16 VljEk<CeW4U62230L;2fEH3
+R4
+Z17 w1743386609
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 67
+R8
+r1
+!s85 0
+31
+Z20 !s108 1743386611.173000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+Z23 ndetector@boton_vlg_check_tst
+vdetectorBoton_vlg_sample_tst
+!i10b 1
+Z24 !s100 EBI[zlZaP0`C^AGCg_kak0
+Z25 IKgTLFYB2TJgEDJ51j:If;0
+Z26 VYmKRzleX8j`;^<BV8Og223
+R4
+R17
+R18
+R19
+L0 29
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z27 ndetector@boton_vlg_sample_tst
+vdetectorBoton_vlg_vec_tst
+!i10b 1
+!s100 XHX8zbhE3CUU2]`mI_SUS2
+IFN_68eKC;4gGc7b3]f4hV0
+Z28 V_0G0Xeke?VZhS0Q=GP:VP3
+R4
+R17
+R18
+R19
+Z29 L0 331
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z30 ndetector@boton_vlg_vec_tst

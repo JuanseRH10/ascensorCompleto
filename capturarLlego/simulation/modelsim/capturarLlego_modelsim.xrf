@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, C:/altera/13.1/capturarLlego/capturarLlego.vhd
+source_file = 1, C:/altera/13.1/capturarLlego/db/capturarLlego.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = capturarLlego
+instance = comp, \llego_capturado~output\, llego_capturado~output, capturarLlego, 1
+instance = comp, \clk~input\, clk~input, capturarLlego, 1
+instance = comp, \clk~inputclkctrl\, clk~inputclkctrl, capturarLlego, 1
+instance = comp, \llego~input\, llego~input, capturarLlego, 1
+instance = comp, \clear~input\, clear~input, capturarLlego, 1
+instance = comp, \llego_prev~feeder\, llego_prev~feeder, capturarLlego, 1
+instance = comp, \capturado~0\, capturado~0, capturarLlego, 1

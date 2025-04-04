@@ -4,7 +4,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity contadorPersonas is
     Port (
-        clk        : in  std_logic;                 
+        clk        : in  std_logic;
+		  estadoPuerta : in std_logic;
         reset      : in  std_logic;                 
         personaEntra  : in  std_logic;                 
         personaSale : in  std_logic; 
@@ -19,24 +20,28 @@ begin
 
     process(clk, reset)
     begin
-        if reset = '1' then
-            cnt <= (others => '0');
-        elsif rising_edge(clk) then
-            
-            if personaEntra = '1' and personaSale = '0' then
-                cnt <= cnt + 1;
-            
-            elsif personaEntra = '0' and personaSale = '1' then
-                if cnt > 0 then
-                    cnt <= cnt - 1;
-                else
-                    cnt <= cnt;
-                end if;
-          
-            else
-                cnt <= cnt;
-            end if;
-        end if;
+        if estadoPuerta = '1' then
+			  if reset = '1' then
+					cnt <= (others => '0');
+			  elsif rising_edge(clk) then
+					
+					if personaEntra = '1' and personaSale = '0' then
+						 cnt <= cnt + 1;
+					
+					elsif personaEntra = '0' and personaSale = '1' then
+						 if cnt > 0 then
+							  cnt <= cnt - 1;
+						 else
+							  cnt <= cnt;
+						 end if;
+				 
+					else
+						 cnt <= cnt;
+					end if;
+			  end if;
+			else
+			cnt <= cnt;
+			end if;
     end process;
     
   

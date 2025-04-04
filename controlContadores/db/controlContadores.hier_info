@@ -1,0 +1,16 @@
+|controlContadores
+clk => clear_reg.CLK
+clk => caso[0].CLK
+clk => caso[1].CLK
+llego => caso.OUTPUTSELECT
+llego => caso.OUTPUTSELECT
+llego => process_0.IN0
+anomalia => process_0.IN0
+sobreCarga => process_0.IN1
+llegoa10 => process_0.IN1
+llegoa45 => process_0.IN1
+reset1 <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+reset2 <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+clear <= clear_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+

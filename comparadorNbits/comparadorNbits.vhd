@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity comparadorNbits is
 	generic
 	(
-		n	: integer  :=	4
+		n	: integer  :=	6
 		
 	);
 

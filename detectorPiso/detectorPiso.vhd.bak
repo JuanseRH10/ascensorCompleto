@@ -3,59 +3,85 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity detectorPiso is
-    Port (
-        subir      : in  std_logic;              -- Pulso para subir un piso
-        bajar      : in  std_logic;              -- Pulso para bajar un piso
-        peticion1  : in  std_logic_vector(2 downto 0);  -- Piso solicitado en la petición 1
-        peticion2  : in  std_logic_vector(2 downto 0);  -- Piso solicitado en la petición 2
-        pisoActual : out std_logic_vector(2 downto 0);  -- Piso actual (almacenado asíncronamente)
-        reset1     : out std_logic;              -- Se activa en '1' si pisoActual = peticion1
-        reset2     : out std_logic               -- Se activa en '1' si pisoActual = peticion2
-    );
+	port
+	(
+		clk     : in std_logic;
+		subir   : in std_logic;
+		bajar   : in std_logic;
+		quieto  : in std_logic;
+		pet1	  : in  std_logic_vector(2 downto 0);
+		pet2	  : in  std_logic_vector(2 downto 0);
+		
+		pisoActual  :  out std_logic_vector(2 downto 0);
+		reset1  : out std_logic;
+		reset2  : out std_logic
+		
+	);
 end detectorPiso;
 
+
 architecture arch_detectorPiso of detectorPiso is
-  
-    signal piso : unsigned(2 downto 0) := "001";
-	 
+
+	signal sin, sin2, sin3, sin4, sin5, sin6 : std_logic;
+	signal clkDiv, clkPiso : std_logic;
+	signal scuenta : std_logic_vector(1 downto 0);
+	signal spisoActual : std_logic_vector(2 downto 0);
+	
+	
+	component div_frec is
+		port
+		(
+			clk	: in  std_logic;
+			out1, out2 : buffer std_logic
+		);
+	end component;
+	
+	component contadorGenerico is
+		 generic (
+			  N : integer := 2 
+		 );
+		 port(
+			  clk        : in  std_logic;
+			  reset      : in  std_logic;
+			  enable     : in  std_logic;
+			  valorRes   : in  std_logic_vector(N-1 downto 0);
+			  cuenta     : out std_logic_vector(N-1 downto 0)
+		 );
+	end component;
+	
+	component comparadorNbits is
+		generic
+		(
+			n	: integer  :=	3
+		);
+		port
+		(
+			A	: in  std_logic_vector(n-1 downto 0);
+			B	: in  std_logic_vector(n-1 downto 0);
+			AiguB  : out std_logic;
+			AmayB  : out std_logic;
+			AmenB  : out std_logic
+		);
+	end component;
+
+	component actualizarPiso is
+		 Port(
+			  clk        : in  std_logic;
+			  subir      : in  std_logic;
+			  bajar      : in  std_logic;
+			  quieto     : in  std_logic; 
+			  pisoActual : out std_logic_vector(2 downto 0)
+		 );
+	end component;
+
 begin
 
-    process(subir, bajar, piso, peticion1, peticion2)
-        variable nuevoPiso : unsigned(2 downto 0);
-    begin
-        -- Por defecto se conserva el piso actual.
-        nuevoPiso := piso;
-        
-        -- Si se activa el pulso para subir y no se excede el piso 5 ("101").
-        if subir = '1' then
-            if piso < "101" then
-                nuevoPiso := piso + 1;
-            end if;
-        -- Si se activa el pulso para bajar y no se baja de piso 1 ("001").
-        elsif bajar = '1' then
-            if piso > "001" then
-                nuevoPiso := piso - 1;
-            end if;
-        end if;
-        
-        -- Se "almacena" el nuevo piso (se infiere un latch).
-        piso <= nuevoPiso;
-        
-        -- Comparación con las peticiones:
-        if piso = unsigned(peticion1) then
-            reset1 <= '1';
-        else
-            reset1 <= '0';
-        end if;
-        
-        if piso = unsigned(peticion2) then
-            reset2 <= '1';
-        else
-            reset2 <= '0';
-        end if;
-    end process;
-    
-    -- Se asigna el valor interno convertido a std_logic_vector a la salida.
-    pisoActual <= std_logic_vector(piso);
+	--U1 : div_frec port map (clk,sin,clkDIV);
+	U2 : contadorGenerico port map (clk,'0','1',"10",scuenta);
+	U3 : comparadorNbits port map ('0'&scuenta,"010",clkPiso,sin,sin2);
+	U4 : actualizarPiso port map (clkPiso,subir,bajar,quieto,spisoActual);
+	U5 : comparadorNbits port map (spisoActual,pet1,reset1,sin3,sin4);
+	U6 : comparadorNbits port map (spisoActual,pet2,reset2,sin5,sin6);
+	pisoActual <= spisoActual;
 
 end arch_detectorPiso;

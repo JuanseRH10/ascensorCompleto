@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
 
--- DATE "03/27/2025 14:31:28"
+-- DATE "03/31/2025 01:18:53"
 
 -- 
 -- Device: Altera EP3C16F484C6 Package FBGA484
@@ -26,17 +26,21 @@
 -- This VHDL file should be used for ModelSim-Altera (VHDL) only
 -- 
 
+LIBRARY ALTERA;
 LIBRARY CYCLONEIII;
 LIBRARY IEEE;
+USE ALTERA.ALTERA_PRIMITIVES_COMPONENTS.ALL;
 USE CYCLONEIII.CYCLONEIII_COMPONENTS.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY 	detectorPiso IS
     PORT (
+	clk : IN std_logic;
 	subir : IN std_logic;
 	bajar : IN std_logic;
-	peticion1 : IN std_logic_vector(2 DOWNTO 0);
-	peticion2 : IN std_logic_vector(2 DOWNTO 0);
+	quieto : IN std_logic;
+	pet1 : IN std_logic_vector(2 DOWNTO 0);
+	pet2 : IN std_logic_vector(2 DOWNTO 0);
 	pisoActual : OUT std_logic_vector(2 DOWNTO 0);
 	reset1 : OUT std_logic;
 	reset2 : OUT std_logic
@@ -44,19 +48,21 @@ ENTITY 	detectorPiso IS
 END detectorPiso;
 
 -- Design Ports Information
--- pisoActual[0]	=>  Location: PIN_G4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- pisoActual[1]	=>  Location: PIN_C4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- pisoActual[2]	=>  Location: PIN_M6,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- reset1	=>  Location: PIN_V5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- reset2	=>  Location: PIN_P1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- peticion1[1]	=>  Location: PIN_U1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- peticion1[0]	=>  Location: PIN_L7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- peticion1[2]	=>  Location: PIN_E4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- peticion2[1]	=>  Location: PIN_P4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- peticion2[0]	=>  Location: PIN_P22,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- peticion2[2]	=>  Location: PIN_N1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- subir	=>  Location: PIN_P2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- bajar	=>  Location: PIN_AA8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pisoActual[0]	=>  Location: PIN_P3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pisoActual[1]	=>  Location: PIN_V2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pisoActual[2]	=>  Location: PIN_M8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- reset1	=>  Location: PIN_N8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- reset2	=>  Location: PIN_N6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pet1[1]	=>  Location: PIN_V1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pet1[0]	=>  Location: PIN_Y2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pet1[2]	=>  Location: PIN_W1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pet2[1]	=>  Location: PIN_P5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pet2[0]	=>  Location: PIN_U2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pet2[2]	=>  Location: PIN_W2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- subir	=>  Location: PIN_U1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- bajar	=>  Location: PIN_N7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- quieto	=>  Location: PIN_M7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- clk	=>  Location: PIN_M2,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 ARCHITECTURE structure OF detectorPiso IS
@@ -69,44 +75,57 @@ SIGNAL devpor : std_logic := '1';
 SIGNAL ww_devoe : std_logic;
 SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
+SIGNAL ww_clk : std_logic;
 SIGNAL ww_subir : std_logic;
 SIGNAL ww_bajar : std_logic;
-SIGNAL ww_peticion1 : std_logic_vector(2 DOWNTO 0);
-SIGNAL ww_peticion2 : std_logic_vector(2 DOWNTO 0);
+SIGNAL ww_quieto : std_logic;
+SIGNAL ww_pet1 : std_logic_vector(2 DOWNTO 0);
+SIGNAL ww_pet2 : std_logic_vector(2 DOWNTO 0);
 SIGNAL ww_pisoActual : std_logic_vector(2 DOWNTO 0);
 SIGNAL ww_reset1 : std_logic;
 SIGNAL ww_reset2 : std_logic;
+SIGNAL \U3|Equal0~clkctrl_INCLK_bus\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \pisoActual[0]~output_o\ : std_logic;
 SIGNAL \pisoActual[1]~output_o\ : std_logic;
 SIGNAL \pisoActual[2]~output_o\ : std_logic;
 SIGNAL \reset1~output_o\ : std_logic;
 SIGNAL \reset2~output_o\ : std_logic;
-SIGNAL \bajar~input_o\ : std_logic;
+SIGNAL \clk~input_o\ : std_logic;
+SIGNAL \U2|contador~0_combout\ : std_logic;
+SIGNAL \U2|contador[1]~feeder_combout\ : std_logic;
+SIGNAL \U2|contador~1_combout\ : std_logic;
+SIGNAL \U2|contador[0]~feeder_combout\ : std_logic;
+SIGNAL \U3|Equal0~combout\ : std_logic;
+SIGNAL \U3|Equal0~clkctrl_outclk\ : std_logic;
 SIGNAL \subir~input_o\ : std_logic;
-SIGNAL \nuevoPiso~7_combout\ : std_logic;
-SIGNAL \nuevoPiso~8_combout\ : std_logic;
-SIGNAL \LessThan0~0_combout\ : std_logic;
-SIGNAL \nuevoPiso~5_combout\ : std_logic;
-SIGNAL \nuevoPiso~6_combout\ : std_logic;
-SIGNAL \nuevoPiso~3_combout\ : std_logic;
-SIGNAL \nuevoPiso~4_combout\ : std_logic;
-SIGNAL \peticion1[2]~input_o\ : std_logic;
-SIGNAL \peticion1[1]~input_o\ : std_logic;
-SIGNAL \peticion1[0]~input_o\ : std_logic;
-SIGNAL \Equal0~0_combout\ : std_logic;
-SIGNAL \Equal0~1_combout\ : std_logic;
-SIGNAL \peticion2[1]~input_o\ : std_logic;
-SIGNAL \peticion2[0]~input_o\ : std_logic;
-SIGNAL \Equal1~0_combout\ : std_logic;
-SIGNAL \peticion2[2]~input_o\ : std_logic;
-SIGNAL \Equal1~1_combout\ : std_logic;
+SIGNAL \quieto~input_o\ : std_logic;
+SIGNAL \bajar~input_o\ : std_logic;
+SIGNAL \U4|piso[0]~0_combout\ : std_logic;
+SIGNAL \U4|Add0~0_combout\ : std_logic;
+SIGNAL \U4|piso[0]~1_combout\ : std_logic;
+SIGNAL \U4|Add0~1_combout\ : std_logic;
+SIGNAL \pet1[2]~input_o\ : std_logic;
+SIGNAL \pet1[1]~input_o\ : std_logic;
+SIGNAL \pet1[0]~input_o\ : std_logic;
+SIGNAL \U5|Equal0~0_combout\ : std_logic;
+SIGNAL \U5|Equal0~1_combout\ : std_logic;
+SIGNAL \pet2[1]~input_o\ : std_logic;
+SIGNAL \pet2[0]~input_o\ : std_logic;
+SIGNAL \U6|Equal0~0_combout\ : std_logic;
+SIGNAL \pet2[2]~input_o\ : std_logic;
+SIGNAL \U6|Equal0~1_combout\ : std_logic;
+SIGNAL \U2|contador\ : std_logic_vector(1 DOWNTO 0);
+SIGNAL \U4|piso\ : std_logic_vector(2 DOWNTO 0);
+SIGNAL \U4|ALT_INV_piso\ : std_logic_vector(0 DOWNTO 0);
 
 BEGIN
 
+ww_clk <= clk;
 ww_subir <= subir;
 ww_bajar <= bajar;
-ww_peticion1 <= peticion1;
-ww_peticion2 <= peticion2;
+ww_quieto <= quieto;
+ww_pet1 <= pet1;
+ww_pet2 <= pet2;
 pisoActual <= ww_pisoActual;
 reset1 <= ww_reset1;
 reset2 <= ww_reset2;
@@ -114,7 +133,10 @@ ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
 
--- Location: IOOBUF_X0_Y23_N9
+\U3|Equal0~clkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \U3|Equal0~combout\);
+\U4|ALT_INV_piso\(0) <= NOT \U4|piso\(0);
+
+-- Location: IOOBUF_X0_Y9_N2
 \pisoActual[0]~output\ : cycloneiii_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -122,11 +144,11 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \nuevoPiso~4_combout\,
+	i => \U4|ALT_INV_piso\(0),
 	devoe => ww_devoe,
 	o => \pisoActual[0]~output_o\);
 
--- Location: IOOBUF_X1_Y29_N2
+-- Location: IOOBUF_X0_Y9_N23
 \pisoActual[1]~output\ : cycloneiii_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -134,11 +156,11 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \nuevoPiso~6_combout\,
+	i => \U4|piso\(1),
 	devoe => ww_devoe,
 	o => \pisoActual[1]~output_o\);
 
--- Location: IOOBUF_X0_Y13_N9
+-- Location: IOOBUF_X0_Y7_N2
 \pisoActual[2]~output\ : cycloneiii_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -146,11 +168,11 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \nuevoPiso~8_combout\,
+	i => \U4|piso\(2),
 	devoe => ww_devoe,
 	o => \pisoActual[2]~output_o\);
 
--- Location: IOOBUF_X3_Y0_N30
+-- Location: IOOBUF_X0_Y7_N9
 \reset1~output\ : cycloneiii_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -158,11 +180,11 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Equal0~1_combout\,
+	i => \U5|Equal0~1_combout\,
 	devoe => ww_devoe,
 	o => \reset1~output_o\);
 
--- Location: IOOBUF_X0_Y11_N23
+-- Location: IOOBUF_X0_Y8_N16
 \reset2~output\ : cycloneiii_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -170,22 +192,136 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \Equal1~1_combout\,
+	i => \U6|Equal0~1_combout\,
 	devoe => ww_devoe,
 	o => \reset2~output_o\);
 
--- Location: IOIBUF_X16_Y0_N29
-\bajar~input\ : cycloneiii_io_ibuf
+-- Location: IOIBUF_X0_Y13_N15
+\clk~input\ : cycloneiii_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_bajar,
-	o => \bajar~input_o\);
+	i => ww_clk,
+	o => \clk~input_o\);
 
--- Location: IOIBUF_X0_Y11_N15
+-- Location: LCCOMB_X1_Y13_N18
+\U2|contador~0\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U2|contador~0_combout\ = (\U2|contador\(0) & !\U2|contador\(1))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000011001100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \U2|contador\(0),
+	datad => \U2|contador\(1),
+	combout => \U2|contador~0_combout\);
+
+-- Location: LCCOMB_X1_Y13_N20
+\U2|contador[1]~feeder\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U2|contador[1]~feeder_combout\ = \U2|contador~0_combout\
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datad => \U2|contador~0_combout\,
+	combout => \U2|contador[1]~feeder_combout\);
+
+-- Location: FF_X1_Y13_N21
+\U2|contador[1]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \U2|contador[1]~feeder_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \U2|contador\(1));
+
+-- Location: LCCOMB_X1_Y13_N28
+\U2|contador~1\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U2|contador~1_combout\ = (!\U2|contador\(0) & !\U2|contador\(1))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000001111",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \U2|contador\(0),
+	datad => \U2|contador\(1),
+	combout => \U2|contador~1_combout\);
+
+-- Location: LCCOMB_X1_Y13_N30
+\U2|contador[0]~feeder\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U2|contador[0]~feeder_combout\ = \U2|contador~1_combout\
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datad => \U2|contador~1_combout\,
+	combout => \U2|contador[0]~feeder_combout\);
+
+-- Location: FF_X1_Y13_N31
+\U2|contador[0]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \U2|contador[0]~feeder_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \U2|contador\(0));
+
+-- Location: LCCOMB_X1_Y13_N0
+\U3|Equal0\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U3|Equal0~combout\ = LCELL((!\U2|contador\(0) & \U2|contador\(1)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \U2|contador\(0),
+	datad => \U2|contador\(1),
+	combout => \U3|Equal0~combout\);
+
+-- Location: CLKCTRL_G1
+\U3|Equal0~clkctrl\ : cycloneiii_clkctrl
+-- pragma translate_off
+GENERIC MAP (
+	clock_type => "global clock",
+	ena_register_mode => "none")
+-- pragma translate_on
+PORT MAP (
+	inclk => \U3|Equal0~clkctrl_INCLK_bus\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	outclk => \U3|Equal0~clkctrl_outclk\);
+
+-- Location: IOIBUF_X0_Y9_N15
 \subir~input\ : cycloneiii_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -196,176 +332,258 @@ PORT MAP (
 	i => ww_subir,
 	o => \subir~input_o\);
 
--- Location: LCCOMB_X1_Y10_N2
-\nuevoPiso~7\ : cycloneiii_lcell_comb
+-- Location: IOIBUF_X0_Y8_N22
+\quieto~input\ : cycloneiii_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_quieto,
+	o => \quieto~input_o\);
+
+-- Location: IOIBUF_X0_Y6_N22
+\bajar~input\ : cycloneiii_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_bajar,
+	o => \bajar~input_o\);
+
+-- Location: LCCOMB_X1_Y8_N20
+\U4|piso[0]~0\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \nuevoPiso~7_combout\ = (\subir~input_o\ & ((\nuevoPiso~6_combout\))) # (!\subir~input_o\ & (\bajar~input_o\ & !\nuevoPiso~6_combout\))
+-- \U4|piso[0]~0_combout\ = \U4|piso\(0) $ (((!\quieto~input_o\ & ((\subir~input_o\) # (\bajar~input_o\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110000110000",
+	lut_mask => "1100001111010010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \subir~input_o\,
-	datac => \bajar~input_o\,
-	datad => \nuevoPiso~6_combout\,
-	combout => \nuevoPiso~7_combout\);
+	dataa => \subir~input_o\,
+	datab => \quieto~input_o\,
+	datac => \U4|piso\(0),
+	datad => \bajar~input_o\,
+	combout => \U4|piso[0]~0_combout\);
 
--- Location: LCCOMB_X1_Y10_N12
-\nuevoPiso~8\ : cycloneiii_lcell_comb
+-- Location: FF_X1_Y8_N21
+\U4|piso[0]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \U3|Equal0~clkctrl_outclk\,
+	d => \U4|piso[0]~0_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \U4|piso\(0));
+
+-- Location: LCCOMB_X1_Y8_N18
+\U4|Add0~0\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \nuevoPiso~8_combout\ = (\nuevoPiso~8_combout\ & ((\nuevoPiso~6_combout\) # ((\nuevoPiso~4_combout\) # (!\nuevoPiso~7_combout\)))) # (!\nuevoPiso~8_combout\ & (\nuevoPiso~6_combout\ & (\nuevoPiso~4_combout\ & \nuevoPiso~7_combout\)))
+-- \U4|Add0~0_combout\ = \subir~input_o\ $ (\U4|piso\(1) $ (\U4|piso\(0)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110100010101010",
+	lut_mask => "1010010101011010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \nuevoPiso~8_combout\,
-	datab => \nuevoPiso~6_combout\,
-	datac => \nuevoPiso~4_combout\,
-	datad => \nuevoPiso~7_combout\,
-	combout => \nuevoPiso~8_combout\);
+	dataa => \subir~input_o\,
+	datac => \U4|piso\(1),
+	datad => \U4|piso\(0),
+	combout => \U4|Add0~0_combout\);
 
--- Location: LCCOMB_X1_Y10_N0
-\LessThan0~0\ : cycloneiii_lcell_comb
+-- Location: LCCOMB_X1_Y8_N24
+\U4|piso[0]~1\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \LessThan0~0_combout\ = (\nuevoPiso~8_combout\ & ((\nuevoPiso~6_combout\) # (\nuevoPiso~4_combout\)))
+-- \U4|piso[0]~1_combout\ = (!\quieto~input_o\ & ((\bajar~input_o\) # (\subir~input_o\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010101010001000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \nuevoPiso~8_combout\,
-	datab => \nuevoPiso~6_combout\,
-	datad => \nuevoPiso~4_combout\,
-	combout => \LessThan0~0_combout\);
-
--- Location: LCCOMB_X1_Y10_N6
-\nuevoPiso~5\ : cycloneiii_lcell_comb
--- Equation(s):
--- \nuevoPiso~5_combout\ = (\subir~input_o\ & (((!\LessThan0~0_combout\ & \nuevoPiso~4_combout\)))) # (!\subir~input_o\ & (\bajar~input_o\ & ((!\nuevoPiso~4_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0011000000001010",
+	lut_mask => "0000000011111010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \bajar~input_o\,
-	datab => \LessThan0~0_combout\,
 	datac => \subir~input_o\,
-	datad => \nuevoPiso~4_combout\,
-	combout => \nuevoPiso~5_combout\);
+	datad => \quieto~input_o\,
+	combout => \U4|piso[0]~1_combout\);
 
--- Location: LCCOMB_X1_Y10_N16
-\nuevoPiso~6\ : cycloneiii_lcell_comb
+-- Location: FF_X1_Y8_N19
+\U4|piso[1]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \U3|Equal0~clkctrl_outclk\,
+	d => \U4|Add0~0_combout\,
+	ena => \U4|piso[0]~1_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \U4|piso\(1));
+
+-- Location: LCCOMB_X1_Y8_N16
+\U4|Add0~1\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \nuevoPiso~6_combout\ = (\nuevoPiso~5_combout\ & (!\nuevoPiso~6_combout\ & ((\subir~input_o\) # (\nuevoPiso~8_combout\)))) # (!\nuevoPiso~5_combout\ & (\nuevoPiso~6_combout\))
+-- \U4|Add0~1_combout\ = \U4|piso\(2) $ (((\subir~input_o\ & (\U4|piso\(1) & !\U4|piso\(0))) # (!\subir~input_o\ & (!\U4|piso\(1) & \U4|piso\(0)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0110011001100100",
+	lut_mask => "1110000101111000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \nuevoPiso~5_combout\,
-	datab => \nuevoPiso~6_combout\,
-	datac => \subir~input_o\,
-	datad => \nuevoPiso~8_combout\,
-	combout => \nuevoPiso~6_combout\);
+	dataa => \subir~input_o\,
+	datab => \U4|piso\(1),
+	datac => \U4|piso\(2),
+	datad => \U4|piso\(0),
+	combout => \U4|Add0~1_combout\);
 
--- Location: LCCOMB_X1_Y10_N26
-\nuevoPiso~3\ : cycloneiii_lcell_comb
--- Equation(s):
--- \nuevoPiso~3_combout\ = (\bajar~input_o\ & ((\nuevoPiso~6_combout\) # (\nuevoPiso~8_combout\)))
-
+-- Location: FF_X1_Y8_N17
+\U4|piso[2]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111000011000000",
-	sum_lutc_input => "datac")
+	is_wysiwyg => "true",
+	power_up => "low")
 -- pragma translate_on
 PORT MAP (
-	datab => \nuevoPiso~6_combout\,
-	datac => \bajar~input_o\,
-	datad => \nuevoPiso~8_combout\,
-	combout => \nuevoPiso~3_combout\);
+	clk => \U3|Equal0~clkctrl_outclk\,
+	d => \U4|Add0~1_combout\,
+	ena => \U4|piso[0]~1_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \U4|piso\(2));
 
--- Location: LCCOMB_X1_Y10_N20
-\nuevoPiso~4\ : cycloneiii_lcell_comb
--- Equation(s):
--- \nuevoPiso~4_combout\ = \nuevoPiso~4_combout\ $ (((\subir~input_o\ & ((!\LessThan0~0_combout\))) # (!\subir~input_o\ & (\nuevoPiso~3_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100010100111010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \nuevoPiso~3_combout\,
-	datab => \LessThan0~0_combout\,
-	datac => \subir~input_o\,
-	datad => \nuevoPiso~4_combout\,
-	combout => \nuevoPiso~4_combout\);
-
--- Location: IOIBUF_X0_Y26_N1
-\peticion1[2]~input\ : cycloneiii_io_ibuf
+-- Location: IOIBUF_X0_Y7_N22
+\pet1[2]~input\ : cycloneiii_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_peticion1(2),
-	o => \peticion1[2]~input_o\);
+	i => ww_pet1(2),
+	o => \pet1[2]~input_o\);
 
--- Location: IOIBUF_X0_Y9_N15
-\peticion1[1]~input\ : cycloneiii_io_ibuf
+-- Location: IOIBUF_X0_Y8_N1
+\pet1[1]~input\ : cycloneiii_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_peticion1(1),
-	o => \peticion1[1]~input_o\);
+	i => ww_pet1(1),
+	o => \pet1[1]~input_o\);
 
--- Location: IOIBUF_X0_Y11_N1
-\peticion1[0]~input\ : cycloneiii_io_ibuf
+-- Location: IOIBUF_X0_Y6_N1
+\pet1[0]~input\ : cycloneiii_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_peticion1(0),
-	o => \peticion1[0]~input_o\);
+	i => ww_pet1(0),
+	o => \pet1[0]~input_o\);
 
--- Location: LCCOMB_X1_Y10_N24
-\Equal0~0\ : cycloneiii_lcell_comb
+-- Location: LCCOMB_X1_Y8_N30
+\U5|Equal0~0\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \Equal0~0_combout\ = (\peticion1[1]~input_o\ & (\nuevoPiso~6_combout\ & (\peticion1[0]~input_o\ $ (!\nuevoPiso~4_combout\)))) # (!\peticion1[1]~input_o\ & (!\nuevoPiso~6_combout\ & (\peticion1[0]~input_o\ $ (!\nuevoPiso~4_combout\))))
+-- \U5|Equal0~0_combout\ = (\pet1[1]~input_o\ & (\U4|piso\(1) & (\pet1[0]~input_o\ $ (\U4|piso\(0))))) # (!\pet1[1]~input_o\ & (!\U4|piso\(1) & (\pet1[0]~input_o\ $ (\U4|piso\(0)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1001000000001001",
+	lut_mask => "0000100110010000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \peticion1[1]~input_o\,
-	datab => \nuevoPiso~6_combout\,
-	datac => \peticion1[0]~input_o\,
-	datad => \nuevoPiso~4_combout\,
-	combout => \Equal0~0_combout\);
+	dataa => \pet1[1]~input_o\,
+	datab => \U4|piso\(1),
+	datac => \pet1[0]~input_o\,
+	datad => \U4|piso\(0),
+	combout => \U5|Equal0~0_combout\);
 
--- Location: LCCOMB_X1_Y10_N10
-\Equal0~1\ : cycloneiii_lcell_comb
+-- Location: LCCOMB_X1_Y7_N16
+\U5|Equal0~1\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \Equal0~1_combout\ = (\Equal0~0_combout\ & (\peticion1[2]~input_o\ $ (!\nuevoPiso~8_combout\)))
+-- \U5|Equal0~1_combout\ = (\U5|Equal0~0_combout\ & (\pet1[2]~input_o\ $ (!\U4|piso\(2))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1000010010000100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \pet1[2]~input_o\,
+	datab => \U5|Equal0~0_combout\,
+	datac => \U4|piso\(2),
+	combout => \U5|Equal0~1_combout\);
+
+-- Location: IOIBUF_X0_Y8_N8
+\pet2[1]~input\ : cycloneiii_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_pet2(1),
+	o => \pet2[1]~input_o\);
+
+-- Location: IOIBUF_X0_Y9_N8
+\pet2[0]~input\ : cycloneiii_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_pet2(0),
+	o => \pet2[0]~input_o\);
+
+-- Location: LCCOMB_X1_Y8_N28
+\U6|Equal0~0\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U6|Equal0~0_combout\ = (\pet2[1]~input_o\ & (\U4|piso\(1) & (\pet2[0]~input_o\ $ (\U4|piso\(0))))) # (!\pet2[1]~input_o\ & (!\U4|piso\(1) & (\pet2[0]~input_o\ $ (\U4|piso\(0)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000100110010000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \pet2[1]~input_o\,
+	datab => \U4|piso\(1),
+	datac => \pet2[0]~input_o\,
+	datad => \U4|piso\(0),
+	combout => \U6|Equal0~0_combout\);
+
+-- Location: IOIBUF_X0_Y7_N15
+\pet2[2]~input\ : cycloneiii_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_pet2(2),
+	o => \pet2[2]~input_o\);
+
+-- Location: LCCOMB_X1_Y8_N14
+\U6|Equal0~1\ : cycloneiii_lcell_comb
+-- Equation(s):
+-- \U6|Equal0~1_combout\ = (\U6|Equal0~0_combout\ & (\U4|piso\(2) $ (!\pet2[2]~input_o\)))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -373,76 +591,10 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \peticion1[2]~input_o\,
-	datab => \Equal0~0_combout\,
-	datad => \nuevoPiso~8_combout\,
-	combout => \Equal0~1_combout\);
-
--- Location: IOIBUF_X0_Y10_N22
-\peticion2[1]~input\ : cycloneiii_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_peticion2(1),
-	o => \peticion2[1]~input_o\);
-
--- Location: IOIBUF_X41_Y11_N1
-\peticion2[0]~input\ : cycloneiii_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_peticion2(0),
-	o => \peticion2[0]~input_o\);
-
--- Location: LCCOMB_X1_Y10_N28
-\Equal1~0\ : cycloneiii_lcell_comb
--- Equation(s):
--- \Equal1~0_combout\ = (\peticion2[1]~input_o\ & (\nuevoPiso~6_combout\ & (\peticion2[0]~input_o\ $ (!\nuevoPiso~4_combout\)))) # (!\peticion2[1]~input_o\ & (!\nuevoPiso~6_combout\ & (\peticion2[0]~input_o\ $ (!\nuevoPiso~4_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001000000001001",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \peticion2[1]~input_o\,
-	datab => \nuevoPiso~6_combout\,
-	datac => \peticion2[0]~input_o\,
-	datad => \nuevoPiso~4_combout\,
-	combout => \Equal1~0_combout\);
-
--- Location: IOIBUF_X0_Y12_N22
-\peticion2[2]~input\ : cycloneiii_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_peticion2(2),
-	o => \peticion2[2]~input_o\);
-
--- Location: LCCOMB_X1_Y10_N30
-\Equal1~1\ : cycloneiii_lcell_comb
--- Equation(s):
--- \Equal1~1_combout\ = (\Equal1~0_combout\ & (\peticion2[2]~input_o\ $ (!\nuevoPiso~8_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100000000001100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \Equal1~0_combout\,
-	datac => \peticion2[2]~input_o\,
-	datad => \nuevoPiso~8_combout\,
-	combout => \Equal1~1_combout\);
+	dataa => \U4|piso\(2),
+	datab => \U6|Equal0~0_combout\,
+	datad => \pet2[2]~input_o\,
+	combout => \U6|Equal0~1_combout\);
 
 ww_pisoActual(0) <= \pisoActual[0]~output_o\;
 

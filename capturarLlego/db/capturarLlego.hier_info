@@ -1,0 +1,9 @@
+|capturarLlego
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+

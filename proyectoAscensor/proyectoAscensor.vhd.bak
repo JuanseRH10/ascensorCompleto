@@ -1,0 +1,121 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity proyectoAscensor is
+	port
+	(
+		PS, PB, PD	: in  std_logic_vector(4 downto 0);
+		clk  : in std_logic;
+		anomalia  : in std_logic;
+		
+		estadoPuerta  : in std_logic;
+		a1, b1, c1, d1, e1, f1, g1	: out  std_logic --Deco piso actual
+	);
+end proyectoAscensor;
+
+
+
+architecture arch_proyectoAscensor of proyectoAscensor is
+
+	signal spet1, spet2 : std_logic_vector(2 downto 0);
+	signal sreset1, sreset2 : std_logic;
+	signal ssubir, sbajar, squieto : std_logic;
+	signal scambiandoEstado, sestadoPuerta, ssobrecarga : std_logic;
+	signal sllego : std_logic;
+	signal spisoActual : std_logic_vector(2 downto 0);
+	
+	component registrosBotones is
+		port
+		(
+			
+			clk  :  in std_logic;
+			reset1  :  in std_logic;
+			reset2  :  in std_logic;
+			PS	 :  in  std_logic_vector(4 downto 0);
+			PB  :  in  std_logic_vector(4 downto 0);
+			PD	 :  in  std_logic_vector(4 downto 0);
+			
+			pet1  :  out std_logic_vector(2 downto 0);
+			pet2  :  out std_logic_vector(2 downto 0)
+			
+		);
+	end component;
+	
+	component controlAscensor is
+		port
+		(
+			
+			pisoActual	     : in  std_logic_vector(2 downto 0);
+			pet1	           : in  std_logic_vector(2 downto 0);
+			pet2	           : in  std_logic_vector(2 downto 0);
+			sobreCarga       : in  std_logic;
+			estadoPuerta     : in  std_logic;
+			anomalia         : in  std_logic;
+			cambiandoEstado  : in  std_logic;
+			
+			subir   : out std_logic;
+			bajar   : out std_logic;
+			quieto  : out std_logic
+			
+		);
+	end component;
+	
+	component detectorPiso is
+		port
+		(
+			clk     : in std_logic;
+			subir   : in std_logic;
+			bajar   : in std_logic;
+			quieto  : in std_logic;
+			pet1	  : in  std_logic_vector(2 downto 0);
+			pet2	  : in  std_logic_vector(2 downto 0);
+			
+			pisoActual  :  out std_logic_vector(2 downto 0);
+			reset1  : out std_logic;
+			reset2  : out std_logic
+			
+		);
+	end component;
+	
+	component controlPuerta is
+		port
+		(
+			-- Input ports
+			clk	: in  std_logic;
+			llego       : in  std_logic;
+			anomalia    : in  std_logic;
+			sobreCarga  : in  std_logic;
+			
+			cambiandoEstado  : out std_logic;
+			estadoPuerta  : out std_logic
+			
+		);
+	end component;
+
+	component deco7seg is
+	
+		port
+		(
+			-- Input ports
+			A, B, C, D	 : in  std_logic;
+		
+			-- Output ports
+			a1, b1, c1, d1, e1, f1, g1	: out  std_logic
+		
+		);
+	end component;
+	
+begin
+
+	U1 : registrosBotones port map(clk,sreset1,sreset2,PS,PB,PD,spet1,spet2);
+	U2 : controlAscensor port map(spisoActual,spet1.spet2,ssobrecarga,sestadoPuerta,anomalia,scambiandoEstado,ssubir,sbajar,squieto);
+	U3 : detectorPiso port map (clk,ssubir,sbajar,squieto,spet1,spet2,spisoActual,sreset1,sreset2);
+	sllego <= sreset1 or sreset2;
+	U4 : controlPuerta port map(clk,sllego,anomalia,ssobrecarga,scambiandoEstado,sestadoPuerta);
+	
+	--Decodificacion
+	H1 : deco7seg port map ('0',spisoActual(2),spisoActual(1),spisoActual(0),a1, b1, c1, d1, e1, f1, g1);
+	estadoPuerta <= sestadoPuerta;
+
+end arch_proyectoAscensor;

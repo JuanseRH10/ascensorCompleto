@@ -1,0 +1,302 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "03/31/2025 00:35:57"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module actualizarPiso (
+	clk,
+	subir,
+	bajar,
+	quieto,
+	pisoActual);
+input 	clk;
+input 	subir;
+input 	bajar;
+input 	quieto;
+output 	[2:0] pisoActual;
+
+// Design Ports Information
+// pisoActual[0]	=>  Location: PIN_P7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// pisoActual[1]	=>  Location: PIN_AA1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// pisoActual[2]	=>  Location: PIN_V4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// subir	=>  Location: PIN_P6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// bajar	=>  Location: PIN_Y1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// quieto	=>  Location: PIN_AA2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \pisoActual[0]~output_o ;
+wire \pisoActual[1]~output_o ;
+wire \pisoActual[2]~output_o ;
+wire \clk~input_o ;
+wire \clk~inputclkctrl_outclk ;
+wire \subir~input_o ;
+wire \bajar~input_o ;
+wire \quieto~input_o ;
+wire \piso[0]~0_combout ;
+wire \Add0~0_combout ;
+wire \piso[0]~1_combout ;
+wire \Add0~1_combout ;
+wire [2:0] piso;
+
+
+// Location: IOOBUF_X0_Y5_N2
+cycloneiii_io_obuf \pisoActual[0]~output (
+	.i(!piso[0]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\pisoActual[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \pisoActual[0]~output .bus_hold = "false";
+defparam \pisoActual[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y5_N16
+cycloneiii_io_obuf \pisoActual[1]~output (
+	.i(piso[1]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\pisoActual[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \pisoActual[1]~output .bus_hold = "false";
+defparam \pisoActual[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y5_N23
+cycloneiii_io_obuf \pisoActual[2]~output (
+	.i(piso[2]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\pisoActual[2]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \pisoActual[2]~output .bus_hold = "false";
+defparam \pisoActual[2]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N1
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G4
+cycloneiii_clkctrl \clk~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\clk~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \clk~inputclkctrl .clock_type = "global clock";
+defparam \clk~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y4_N8
+cycloneiii_io_ibuf \subir~input (
+	.i(subir),
+	.ibar(gnd),
+	.o(\subir~input_o ));
+// synopsys translate_off
+defparam \subir~input .bus_hold = "false";
+defparam \subir~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y6_N8
+cycloneiii_io_ibuf \bajar~input (
+	.i(bajar),
+	.ibar(gnd),
+	.o(\bajar~input_o ));
+// synopsys translate_off
+defparam \bajar~input .bus_hold = "false";
+defparam \bajar~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y5_N8
+cycloneiii_io_ibuf \quieto~input (
+	.i(quieto),
+	.ibar(gnd),
+	.o(\quieto~input_o ));
+// synopsys translate_off
+defparam \quieto~input .bus_hold = "false";
+defparam \quieto~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y5_N28
+cycloneiii_lcell_comb \piso[0]~0 (
+// Equation(s):
+// \piso[0]~0_combout  = piso[0] $ (((!\quieto~input_o  & ((\subir~input_o ) # (\bajar~input_o )))))
+
+	.dataa(\subir~input_o ),
+	.datab(\bajar~input_o ),
+	.datac(piso[0]),
+	.datad(\quieto~input_o ),
+	.cin(gnd),
+	.combout(\piso[0]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \piso[0]~0 .lut_mask = 16'hF01E;
+defparam \piso[0]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y5_N29
+dffeas \piso[0] (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\piso[0]~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(piso[0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \piso[0] .is_wysiwyg = "true";
+defparam \piso[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y5_N6
+cycloneiii_lcell_comb \Add0~0 (
+// Equation(s):
+// \Add0~0_combout  = \subir~input_o  $ (piso[1] $ (piso[0]))
+
+	.dataa(\subir~input_o ),
+	.datab(gnd),
+	.datac(piso[1]),
+	.datad(piso[0]),
+	.cin(gnd),
+	.combout(\Add0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Add0~0 .lut_mask = 16'hA55A;
+defparam \Add0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y5_N26
+cycloneiii_lcell_comb \piso[0]~1 (
+// Equation(s):
+// \piso[0]~1_combout  = (!\quieto~input_o  & ((\subir~input_o ) # (\bajar~input_o )))
+
+	.dataa(\quieto~input_o ),
+	.datab(gnd),
+	.datac(\subir~input_o ),
+	.datad(\bajar~input_o ),
+	.cin(gnd),
+	.combout(\piso[0]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \piso[0]~1 .lut_mask = 16'h5550;
+defparam \piso[0]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y5_N7
+dffeas \piso[1] (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\Add0~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\piso[0]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(piso[1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \piso[1] .is_wysiwyg = "true";
+defparam \piso[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y5_N16
+cycloneiii_lcell_comb \Add0~1 (
+// Equation(s):
+// \Add0~1_combout  = piso[2] $ (((piso[1] & (\subir~input_o  & !piso[0])) # (!piso[1] & (!\subir~input_o  & piso[0]))))
+
+	.dataa(piso[1]),
+	.datab(\subir~input_o ),
+	.datac(piso[2]),
+	.datad(piso[0]),
+	.cin(gnd),
+	.combout(\Add0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Add0~1 .lut_mask = 16'hE178;
+defparam \Add0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y5_N17
+dffeas \piso[2] (
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\Add0~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\piso[0]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(piso[2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \piso[2] .is_wysiwyg = "true";
+defparam \piso[2] .power_up = "low";
+// synopsys translate_on
+
+assign pisoActual[0] = \pisoActual[0]~output_o ;
+
+assign pisoActual[1] = \pisoActual[1]~output_o ;
+
+assign pisoActual[2] = \pisoActual[2]~output_o ;
+
+endmodule

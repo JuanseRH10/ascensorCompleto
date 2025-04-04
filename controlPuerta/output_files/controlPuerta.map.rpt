@@ -1,5 +1,5 @@
 Analysis & Synthesis report for controlPuerta
-Thu Mar 27 14:11:37 2025
+Mon Mar 31 13:30:52 2025
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -14,14 +14,19 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: comparadorNbits:U4
- 10. Parameter Settings for User Entity Instance: comparadorNbits:U5
- 11. Port Connectivity Checks: "comparadorNbits:U5"
- 12. Port Connectivity Checks: "comparadorNbits:U4"
- 13. Port Connectivity Checks: "contadorSeg:U3"
- 14. Port Connectivity Checks: "div_frec:U2"
- 15. Elapsed Time Per Partition
- 16. Analysis & Synthesis Messages
+  9. Inverted Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: contadorGenerico:U3
+ 12. Parameter Settings for User Entity Instance: contadorGenerico:U4
+ 13. Parameter Settings for User Entity Instance: comparadorNbits:U5
+ 14. Parameter Settings for User Entity Instance: comparadorNbits:U6
+ 15. Port Connectivity Checks: "div_frec:U9"
+ 16. Port Connectivity Checks: "comparadorNbits:U6"
+ 17. Port Connectivity Checks: "comparadorNbits:U5"
+ 18. Port Connectivity Checks: "contadorGenerico:U4"
+ 19. Port Connectivity Checks: "contadorGenerico:U3"
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -47,16 +52,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Mar 27 14:11:37 2025      ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 31 13:30:52 2025      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; controlPuerta                              ;
 ; Top-level Entity Name              ; controlPuerta                              ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 68                                         ;
-;     Total combinational functions  ; 66                                         ;
-;     Dedicated logic registers      ; 35                                         ;
-; Total registers                    ; 35                                         ;
-; Total pins                         ; 5                                          ;
+; Total logic elements               ; 87                                         ;
+;     Total combinational functions  ; 86                                         ;
+;     Dedicated logic registers      ; 49                                         ;
+; Total registers                    ; 49                                         ;
+; Total pins                         ; 18                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -168,17 +173,18 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                               ;
-+-------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------+---------+
-; File Name with User-Entered Path                      ; Used in Netlist ; File Type       ; File Name with Absolute Path                                   ; Library ;
-+-------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------+---------+
-; ../detectorCambio/detectorCambio.vhd                  ; yes             ; User VHDL File  ; C:/altera/13.1/VHDL/detectorCambio/detectorCambio.vhd          ;         ;
-; ../../componentes/div_frec/div_frec.vhd               ; yes             ; User VHDL File  ; C:/altera/13.1/componentes/div_frec/div_frec.vhd               ;         ;
-; ../../componentes/contadorSeg/contadorSeg.vhd         ; yes             ; User VHDL File  ; C:/altera/13.1/componentes/contadorSeg/contadorSeg.vhd         ;         ;
-; ../../componentes/comparadorNbits/comparadorNbits.vhd ; yes             ; User VHDL File  ; C:/altera/13.1/componentes/comparadorNbits/comparadorNbits.vhd ;         ;
-; controlPuerta.vhd                                     ; yes             ; User VHDL File  ; C:/altera/13.1/VHDL/controlPuerta/controlPuerta.vhd            ;         ;
-+-------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++--------------------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path           ; Used in Netlist ; File Type       ; File Name with Absolute Path                                            ; Library ;
++--------------------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+; ../div_frec/div_frec.vhd                   ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/div_frec/div_frec.vhd                   ;         ;
+; ../comparadorNbits/comparadorNbits.vhd     ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/comparadorNbits/comparadorNbits.vhd     ;         ;
+; ../contadorGenerico/contadorGenerico.vhd   ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/contadorGenerico/contadorGenerico.vhd   ;         ;
+; ../capturarLlego/capturarLlego.vhd         ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/capturarLlego/capturarLlego.vhd         ;         ;
+; ../controlContadores/controlContadores.vhd ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/controlContadores/controlContadores.vhd ;         ;
+; controlPuerta.vhd                          ; yes             ; User VHDL File  ; C:/altera/13.1/archivosAscensor/controlPuerta/controlPuerta.vhd         ;         ;
++--------------------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -186,43 +192,45 @@ applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 68        ;
+; Estimated Total logic elements              ; 87        ;
 ;                                             ;           ;
-; Total combinational functions               ; 66        ;
+; Total combinational functions               ; 86        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 31        ;
-;     -- 3 input functions                    ; 2         ;
-;     -- <=2 input functions                  ; 33        ;
+;     -- 4 input functions                    ; 43        ;
+;     -- 3 input functions                    ; 4         ;
+;     -- <=2 input functions                  ; 39        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 37        ;
-;     -- arithmetic mode                      ; 29        ;
+;     -- normal mode                          ; 52        ;
+;     -- arithmetic mode                      ; 34        ;
 ;                                             ;           ;
-; Total registers                             ; 35        ;
-;     -- Dedicated logic registers            ; 35        ;
+; Total registers                             ; 49        ;
+;     -- Dedicated logic registers            ; 49        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 5         ;
+; I/O pins                                    ; 18        ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 29        ;
-; Total fan-out                               ; 283       ;
-; Average fan-out                             ; 2.55      ;
+; Maximum fan-out                             ; 37        ;
+; Total fan-out                               ; 403       ;
+; Average fan-out                             ; 2.36      ;
 +---------------------------------------------+-----------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                       ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
-; |controlPuerta             ; 66 (0)            ; 35 (0)       ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |controlPuerta                    ; work         ;
-;    |comparadorNbits:U4|    ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|comparadorNbits:U4 ; work         ;
-;    |comparadorNbits:U5|    ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|comparadorNbits:U5 ; work         ;
-;    |contadorSeg:U3|        ; 10 (10)           ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|contadorSeg:U3     ; work         ;
-;    |detectorCambio:U1|     ; 2 (2)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|detectorCambio:U1  ; work         ;
-;    |div_frec:U2|           ; 48 (48)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|div_frec:U2        ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                 ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
+; |controlPuerta             ; 86 (1)            ; 49 (0)       ; 0           ; 0            ; 0       ; 0         ; 18   ; 0            ; |controlPuerta                      ; work         ;
+;    |capturarLlego:U2|      ; 1 (1)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|capturarLlego:U2     ; work         ;
+;    |capturarLlego:U7|      ; 1 (1)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|capturarLlego:U7     ; work         ;
+;    |capturarLlego:U8|      ; 1 (1)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|capturarLlego:U8     ; work         ;
+;    |contadorGenerico:U3|   ; 11 (11)           ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|contadorGenerico:U3  ; work         ;
+;    |contadorGenerico:U4|   ; 11 (11)           ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|contadorGenerico:U4  ; work         ;
+;    |controlContadores:U1|  ; 12 (12)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|controlContadores:U1 ; work         ;
+;    |div_frec:U9|           ; 48 (48)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |controlPuerta|div_frec:U9          ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -231,23 +239,54 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 35    ;
+; Total registers                              ; 49    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Clear ; 12    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 6     ;
+; Number of registers using Clock Enable       ; 2     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: comparadorNbits:U4 ;
-+----------------+-------+----------------------------------------+
-; Parameter Name ; Value ; Type                                   ;
-+----------------+-------+----------------------------------------+
-; n              ; 6     ; Signed Integer                         ;
-+----------------+-------+----------------------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; controlContadores:U1|reset1_reg        ; 6       ;
+; controlContadores:U1|reset2_reg        ; 6       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |controlPuerta|controlContadores:U1|stage[1]   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |controlPuerta|controlContadores:U1|reset1_reg ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: contadorGenerico:U3 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; n              ; 6     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: contadorGenerico:U4 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; n              ; 6     ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -261,21 +300,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "comparadorNbits:U5"                                                                    ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; b[5..4] ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; b[2..0] ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; b[3]    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; amayb   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; amenb   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparadorNbits:U6 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; n              ; 6     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "div_frec:U9"                                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; out1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "comparadorNbits:U4"                                                                    ;
+; Port Connectivity Checks: "comparadorNbits:U6"                                                                    ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port    ; Type   ; Severity ; Details                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -289,22 +334,47 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "contadorSeg:U3"                                                                     ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; min  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "comparadorNbits:U5"                                                                    ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; b[1..0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[5]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[4]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; b[3]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[2]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; amayb   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; amenb   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "div_frec:U2"                                                                        ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; out1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------+
+; Port Connectivity Checks: "contadorGenerico:U4"  ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; enable         ; Input ; Info     ; Stuck at VCC ;
+; valorres[5..4] ; Input ; Info     ; Stuck at GND ;
+; valorres[3]    ; Input ; Info     ; Stuck at VCC ;
+; valorres[2]    ; Input ; Info     ; Stuck at GND ;
+; valorres[1]    ; Input ; Info     ; Stuck at VCC ;
+; valorres[0]    ; Input ; Info     ; Stuck at GND ;
++----------------+-------+----------+--------------+
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "contadorGenerico:U3"  ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; enable         ; Input ; Info     ; Stuck at VCC ;
+; valorres[1..0] ; Input ; Info     ; Stuck at GND ;
+; valorres[5]    ; Input ; Info     ; Stuck at GND ;
+; valorres[4]    ; Input ; Info     ; Stuck at VCC ;
+; valorres[3]    ; Input ; Info     ; Stuck at GND ;
+; valorres[2]    ; Input ; Info     ; Stuck at VCC ;
++----------------+-------+----------+--------------+
 
 
 +-------------------------------+
@@ -322,45 +392,48 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Mar 27 14:11:36 2025
+    Info: Processing started: Mon Mar 31 13:30:51 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off controlPuerta -c controlPuerta
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 10 of the 10 physical processors detected instead.
-Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/vhdl/detectorcambio/detectorcambio.vhd
-    Info (12022): Found design unit 1: detectorCambio-arch_detectorCambio
-    Info (12023): Found entity 1: detectorCambio
-Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/componentes/div_frec/div_frec.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/div_frec/div_frec.vhd
     Info (12022): Found design unit 1: div_frec-arch_div_frec
     Info (12023): Found entity 1: div_frec
-Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/componentes/contadorseg/contadorseg.vhd
-    Info (12022): Found design unit 1: contadorSeg-arch_contadorSeg
-    Info (12023): Found entity 1: contadorSeg
-Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/componentes/comparadornbits/comparadornbits.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/comparadornbits/comparadornbits.vhd
     Info (12022): Found design unit 1: comparadorNbits-arch_comparadorNbits
     Info (12023): Found entity 1: comparadorNbits
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/contadorgenerico/contadorgenerico.vhd
+    Info (12022): Found design unit 1: contadorGenerico-arch_contadorGenerico
+    Info (12023): Found entity 1: contadorGenerico
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/capturarllego/capturarllego.vhd
+    Info (12022): Found design unit 1: capturarLlego-arch_capturarLlego
+    Info (12023): Found entity 1: capturarLlego
+Info (12021): Found 2 design units, including 1 entities, in source file /altera/13.1/archivosascensor/controlcontadores/controlcontadores.vhd
+    Info (12022): Found design unit 1: controlContadores-arch_controlContadores
+    Info (12023): Found entity 1: controlContadores
 Info (12021): Found 2 design units, including 1 entities, in source file controlpuerta.vhd
     Info (12022): Found design unit 1: controlPuerta-arch_controlPuerta
     Info (12023): Found entity 1: controlPuerta
 Info (12127): Elaborating entity "controlPuerta" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(27): object "SIN" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(27): object "SIN2" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(27): object "SIN3" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(27): object "SIN4" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(27): object "SIN5" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(27): object "SIN6" assigned a value but never read
-Info (12128): Elaborating entity "detectorCambio" for hierarchy "detectorCambio:U1"
-Info (12128): Elaborating entity "div_frec" for hierarchy "div_frec:U2"
-Info (12128): Elaborating entity "contadorSeg" for hierarchy "contadorSeg:U3"
-Info (12128): Elaborating entity "comparadorNbits" for hierarchy "comparadorNbits:U4"
+Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(26): object "sin" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(26): object "sin2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(26): object "sin3" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(26): object "sin4" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at controlPuerta.vhd(26): object "sin5" assigned a value but never read
+Info (12128): Elaborating entity "controlContadores" for hierarchy "controlContadores:U1"
+Info (12128): Elaborating entity "capturarLlego" for hierarchy "capturarLlego:U2"
+Info (12128): Elaborating entity "contadorGenerico" for hierarchy "contadorGenerico:U3"
+Info (12128): Elaborating entity "comparadorNbits" for hierarchy "comparadorNbits:U5"
+Info (12128): Elaborating entity "div_frec" for hierarchy "div_frec:U9"
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 86 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 2 output pins
-    Info (21061): Implemented 81 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 4709 megabytes
-    Info: Processing ended: Thu Mar 27 14:11:37 2025
+Info (21057): Implemented 120 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 102 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4708 megabytes
+    Info: Processing ended: Mon Mar 31 13:30:52 2025
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

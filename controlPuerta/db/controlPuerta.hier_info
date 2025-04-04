@@ -1,25 +1,205 @@
 |controlPuerta
-reset1 => detectorCambio:U1.reset1
-reset2 => detectorCambio:U1.reset2
-clk => detectorCambio:U1.clk
-clk => div_frec:U2.clk
-abrir <= comparadorNbits:U4.AiguB
-cerrar <= comparadorNbits:U5.AiguB
+clk => controlContadores:U1.clk
+clk => capturarLlego:U2.clk
+clk => capturarLlego:U7.clk
+clk => capturarLlego:U8.clk
+clk => div_frec:U9.clk
+llego => capturarLlego:U2.llego
+anomalia => controlContadores:U1.anomalia
+anomalia => spuerta1.IN0
+anomalia => spuerta2.IN1
+sobreCarga => spuerta1.IN1
+sobreCarga => controlContadores:U1.sobreCarga
+cuenta1[0] <= contadorGenerico:U3.cuenta[0]
+cuenta1[1] <= contadorGenerico:U3.cuenta[1]
+cuenta1[2] <= contadorGenerico:U3.cuenta[2]
+cuenta1[3] <= contadorGenerico:U3.cuenta[3]
+cuenta1[4] <= contadorGenerico:U3.cuenta[4]
+cuenta1[5] <= contadorGenerico:U3.cuenta[5]
+cuenta2[0] <= contadorGenerico:U4.cuenta[0]
+cuenta2[1] <= contadorGenerico:U4.cuenta[1]
+cuenta2[2] <= contadorGenerico:U4.cuenta[2]
+cuenta2[3] <= contadorGenerico:U4.cuenta[3]
+cuenta2[4] <= contadorGenerico:U4.cuenta[4]
+cuenta2[5] <= contadorGenerico:U4.cuenta[5]
+cambiandoEstado <= capturarLlego:U2.llego_capturado
+estadoPuerta <= estadoPuerta.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|controlPuerta|detectorCambio:U1
-clk => detecta.CLK
-clk => reset2Prev.CLK
-clk => reset1Prev.CLK
-reset1 => process_0.IN1
-reset1 => reset1Prev.DATAIN
-reset2 => process_0.IN1
-reset2 => reset2Prev.DATAIN
-clear => detecta.OUTPUTSELECT
-salida <= detecta.DB_MAX_OUTPUT_PORT_TYPE
+|controlPuerta|controlContadores:U1
+clk => clear_reg.CLK
+clk => reset2_reg.CLK
+clk => reset1_reg.CLK
+clk => stage[0].CLK
+clk => stage[1].CLK
+llego => stage.OUTPUTSELECT
+llego => stage.OUTPUTSELECT
+llego => reset1_reg.OUTPUTSELECT
+llego => reset2_reg.OUTPUTSELECT
+llego => process_0.IN0
+anomalia => process_0.IN0
+sobreCarga => process_0.IN1
+llegoa10 => process_0.IN1
+llegoa45 => process_0.IN1
+reset1 <= reset1_reg.DB_MAX_OUTPUT_PORT_TYPE
+reset2 <= reset2_reg.DB_MAX_OUTPUT_PORT_TYPE
+clear <= clear_reg.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|controlPuerta|div_frec:U2
+|controlPuerta|capturarLlego:U2
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|contadorGenerico:U3
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+reset => contador[2].ACLR
+reset => contador[3].ACLR
+reset => contador[4].ACLR
+reset => contador[5].ACLR
+enable => contador[0].ENA
+enable => contador[5].ENA
+enable => contador[4].ENA
+enable => contador[3].ENA
+enable => contador[2].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN5
+valorRes[1] => Equal0.IN4
+valorRes[2] => Equal0.IN3
+valorRes[3] => Equal0.IN2
+valorRes[4] => Equal0.IN1
+valorRes[5] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= contador[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= contador[3].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[4] <= contador[4].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[5] <= contador[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|contadorGenerico:U4
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+reset => contador[0].ACLR
+reset => contador[1].ACLR
+reset => contador[2].ACLR
+reset => contador[3].ACLR
+reset => contador[4].ACLR
+reset => contador[5].ACLR
+enable => contador[0].ENA
+enable => contador[5].ENA
+enable => contador[4].ENA
+enable => contador[3].ENA
+enable => contador[2].ENA
+enable => contador[1].ENA
+valorRes[0] => Equal0.IN5
+valorRes[1] => Equal0.IN4
+valorRes[2] => Equal0.IN3
+valorRes[3] => Equal0.IN2
+valorRes[4] => Equal0.IN1
+valorRes[5] => Equal0.IN0
+cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[2] <= contador[2].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[3] <= contador[3].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[4] <= contador[4].DB_MAX_OUTPUT_PORT_TYPE
+cuenta[5] <= contador[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|comparadorNbits:U5
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|comparadorNbits:U6
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|capturarLlego:U7
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|capturarLlego:U8
+clk => llego_prev.CLK
+clk => capturado.CLK
+clear => capturado.OUTPUTSELECT
+llego => process_0.IN1
+llego => llego_prev.DATAIN
+llego_capturado <= capturado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controlPuerta|div_frec:U9
 clk => out2~reg0.CLK
 clk => out1~reg0.CLK
 clk => count1[0].CLK
@@ -52,96 +232,5 @@ clk => count2[23].CLK
 clk => count2[24].CLK
 out1 <= out1~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out2 <= out2~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|controlPuerta|contadorSeg:U3
-clk => min~reg0.CLK
-clk => contador[0].CLK
-clk => contador[1].CLK
-clk => contador[2].CLK
-clk => contador[3].CLK
-clk => contador[4].CLK
-clk => contador[5].CLK
-reset => contador[0].ACLR
-reset => contador[1].ACLR
-reset => contador[2].ACLR
-reset => contador[3].ACLR
-reset => contador[4].ACLR
-reset => contador[5].ACLR
-reset => min~reg0.ENA
-enable => min.OUTPUTSELECT
-enable => contador[5].ENA
-enable => contador[4].ENA
-enable => contador[3].ENA
-enable => contador[2].ENA
-enable => contador[1].ENA
-enable => contador[0].ENA
-min <= min~reg0.DB_MAX_OUTPUT_PORT_TYPE
-cuenta[0] <= contador[0].DB_MAX_OUTPUT_PORT_TYPE
-cuenta[1] <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
-cuenta[2] <= contador[2].DB_MAX_OUTPUT_PORT_TYPE
-cuenta[3] <= contador[3].DB_MAX_OUTPUT_PORT_TYPE
-cuenta[4] <= contador[4].DB_MAX_OUTPUT_PORT_TYPE
-cuenta[5] <= contador[5].DB_MAX_OUTPUT_PORT_TYPE
-
-
-|controlPuerta|comparadorNbits:U4
-A[0] => Equal0.IN5
-A[0] => LessThan0.IN6
-A[1] => Equal0.IN4
-A[1] => LessThan0.IN5
-A[2] => Equal0.IN3
-A[2] => LessThan0.IN4
-A[3] => Equal0.IN2
-A[3] => LessThan0.IN3
-A[4] => Equal0.IN1
-A[4] => LessThan0.IN2
-A[5] => Equal0.IN0
-A[5] => LessThan0.IN1
-B[0] => Equal0.IN11
-B[0] => LessThan0.IN12
-B[1] => Equal0.IN10
-B[1] => LessThan0.IN11
-B[2] => Equal0.IN9
-B[2] => LessThan0.IN10
-B[3] => Equal0.IN8
-B[3] => LessThan0.IN9
-B[4] => Equal0.IN7
-B[4] => LessThan0.IN8
-B[5] => Equal0.IN6
-B[5] => LessThan0.IN7
-AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
-AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
-AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|controlPuerta|comparadorNbits:U5
-A[0] => Equal0.IN5
-A[0] => LessThan0.IN6
-A[1] => Equal0.IN4
-A[1] => LessThan0.IN5
-A[2] => Equal0.IN3
-A[2] => LessThan0.IN4
-A[3] => Equal0.IN2
-A[3] => LessThan0.IN3
-A[4] => Equal0.IN1
-A[4] => LessThan0.IN2
-A[5] => Equal0.IN0
-A[5] => LessThan0.IN1
-B[0] => Equal0.IN11
-B[0] => LessThan0.IN12
-B[1] => Equal0.IN10
-B[1] => LessThan0.IN11
-B[2] => Equal0.IN9
-B[2] => LessThan0.IN10
-B[3] => Equal0.IN8
-B[3] => LessThan0.IN9
-B[4] => Equal0.IN7
-B[4] => LessThan0.IN8
-B[5] => Equal0.IN6
-B[5] => LessThan0.IN7
-AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
-AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
-AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
 
 

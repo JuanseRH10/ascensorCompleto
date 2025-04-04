@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\VHDL\contadorPersonas\simulation\qsim
+vcontadorPersonas
+Z1 !s100 KIX5E=?LI0fHWk1?SZ5GV1
+Z2 IZFmHQUbYnNj_:Sfh?l8aT3
+Z3 VZ3]XcQn@BJAKNgQCAAnDh1
+Z4 dC:\altera\13.1\VHDL\contadorPersonas\simulation\qsim
+Z5 w1743269143
+Z6 8contadorPersonas.vo
+Z7 FcontadorPersonas.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|contadorPersonas.vo|
+Z10 o-work work -O0
+Z11 ncontador@personas
+!i10b 1
+!s85 0
+Z12 !s108 1743269144.519000
+Z13 !s107 contadorPersonas.vo|
+!s101 -O0
+vcontadorPersonas_vlg_check_tst
+!i10b 1
+Z14 !s100 b1obQ0oYUbZg6hG9cW2Hl0
+Z15 I4@la@OmBZM=X<][2S>c<j3
+Z16 V_O2Lm3>NM_X3b1b0NaDUA1
+R4
+Z17 w1743269142
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 63
+R8
+r1
+!s85 0
+31
+Z20 !s108 1743269144.760000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+Z23 ncontador@personas_vlg_check_tst
+vcontadorPersonas_vlg_sample_tst
+!i10b 1
+Z24 !s100 CNa:E7FgiW39Z4>i1bg_W3
+Z25 IKPF@D5TD:Qjm9eF`46zNU3
+Z26 Vin2VL2V3HT:S@9ZfdHPZ62
+R4
+R17
+R18
+R19
+L0 29
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z27 ncontador@personas_vlg_sample_tst
+vcontadorPersonas_vlg_vec_tst
+!i10b 1
+!s100 [HYVe^LM_BO>6_ZTIOmTX3
+IC[=ePAGzAG2FUA]@H?61i2
+Z28 VFGOoS`LFCzRJ17ANdH`>F2
+R4
+R17
+R18
+R19
+Z29 L0 211
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z30 ncontador@personas_vlg_vec_tst

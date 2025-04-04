@@ -1,0 +1,40 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_bit.all;
+
+entity decun is
+	port
+	(
+		
+		sum	: in  bit_vector(4 downto 0);
+		dec   : out bit_vector(3 downto 0);
+		un    : out bit_vector(3 downto 0)
+		
+	);
+end decun;
+
+
+
+architecture arch_decun of decun is
+begin
+	
+	signal decimal : integer range 0 to 20;
+	signal decena  : integer range 0 to 20;
+	signal unidad  : integer range 0 to 20;
+
+	process(dividir)
+	begin
+		
+		decimal :=  to_integer(unsigned(sum));
+		decena  :=  decimal / 10;
+		unidad  :=  decimal mod 10;
+		
+		dec  <=  to_bitvector(to_unsigned(decena, 4));
+		un   <=  to_bitvector(to_unsigned(unidad, 4));
+		
+	end process;
+
+end arch_decun;
+
+
+

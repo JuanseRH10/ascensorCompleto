@@ -1,0 +1,73 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity controlContadores is
+    port (
+        clk        : in  std_logic;
+        llego      : in  std_logic;
+        anomalia   : in  std_logic;
+        sobreCarga : in  std_logic;
+        llegoa10   : in  std_logic;
+        llegoa45   : in  std_logic;
+        reset1     : out std_logic;
+        reset2     : out std_logic;
+        clear      : out std_logic
+    );
+end controlContadores;
+
+architecture arch_controlContadores of controlContadores is
+    signal stage     : std_logic_vector(1 downto 0) := "00";
+    signal clear_reg : std_logic := '0';
+begin
+
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if (anomalia = '1' or sobreCarga = '1') then
+                caso     <= "00";
+                clear_reg <= '0';
+            else
+                case stage is
+                    when "00" =>
+                        -- En estado inactivo, se asegura que clear esté en 0
+                        clear_reg <= '0';
+                        -- Si se recibe la señal de llegada, se activa el primer contador
+                        if (llego = '1') then
+                            caso <= "01";
+                        end if;
+                        
+                    when "01" =>
+                        -- Primer contador activo: reset1 = '0'
+                        clear_reg <= '0';
+                        -- Si se recibe llegoa10 junto con la señal de llegada, se cambia al segundo contador
+                        if (llego = '1' and llegoa10 = '1') then
+                            caso <= "10";
+                        end if;
+                        
+                    when "10" =>
+                        -- Segundo contador activo: reset2 = '0'
+                        -- Cuando se cumple la condición del segundo contador, se emite clear y se vuelve a idle
+                        if (llego = '1' and llegoa10 = '1' and llegoa45 = '1') then
+                            caso     <= "00";
+                            clear_reg <= '1';  -- pulso de clear (se mantendrá un ciclo)
+                        else
+                            clear_reg <= '0';
+                        end if;
+                        
+                    when others =>
+                        caso <= "00";
+                        clear_reg <= '0';
+                end case;
+            end if;
+        end if;
+    end process;
+    
+    -- Asignación de salidas según el valor del registro stage:
+    -- Por defecto, ambos reset están en '1' (contador desactivado).
+    -- En stage "01" se habilita el primer contador (reset1 = '0'),
+    -- en stage "10" se habilita el segundo (reset2 = '0').
+    reset1 <= '0' when caso = "01" else '1';
+    reset2 <= '0' when caso = "10" else '1';
+    clear  <= clear_reg;
+
+end arch_controlContadores;

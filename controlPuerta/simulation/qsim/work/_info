@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\archivosAscensor\controlPuerta\simulation\qsim
+vcontrolPuerta
+Z1 I2La3VYlz`7GLJY;C5HERX2
+Z2 VLdYlcbD@l2YKdT?QRMbk[1
+Z3 dC:\altera\13.1\archivosAscensor\controlPuerta\simulation\qsim
+Z4 w1743431690
+Z5 8controlPuerta.vo
+Z6 FcontrolPuerta.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|controlPuerta.vo|
+Z9 o-work work -O0
+Z10 ncontrol@puerta
+!i10b 1
+Z11 !s100 R<6a<=WQzZDnC8ODjL7_;2
+!s85 0
+Z12 !s108 1743431691.944000
+Z13 !s107 controlPuerta.vo|
+!s101 -O0
+vcontrolPuerta_vlg_check_tst
+!i10b 1
+Z14 !s100 TR^W<8m1SZ030]Q[b^8d>0
+Z15 IAga_A]I6EkzzSV>4OzF;22
+Z16 V_Lk@eKGHzf6;ea<G;eJSA1
+R3
+Z17 w1743431689
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 63
+R7
+r1
+!s85 0
+31
+Z20 !s108 1743431692.274000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R9
+Z23 ncontrol@puerta_vlg_check_tst
+vcontrolPuerta_vlg_sample_tst
+!i10b 1
+Z24 !s100 <klQN65Hk[lC]Oc?MY`]l2
+Z25 IK6o2W9ojAUd=SEcm;j5fb0
+Z26 VV2<S9o0=mQ@oB[hJ@AJjK0
+R3
+R17
+R18
+R19
+L0 29
+R7
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R9
+Z27 ncontrol@puerta_vlg_sample_tst
+vcontrolPuerta_vlg_vec_tst
+!i10b 1
+Z28 !s100 X_UE5`ZMQf^VbbQfaEL990
+Z29 I@]@F<lJQ0WO?aFWg7k`AR2
+Z30 VDAFgl@Zk]6U7;kUfa=lAW1
+R3
+R17
+R18
+R19
+Z31 L0 185
+R7
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R9
+Z32 ncontrol@puerta_vlg_vec_tst

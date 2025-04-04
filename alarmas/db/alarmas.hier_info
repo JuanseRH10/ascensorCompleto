@@ -1,0 +1,118 @@
+|alarmas
+sobreCarga => masde10.DATAIN
+estadoPuerta => luz.IN1
+cantPer[0] => comparadorNbits:U1.A[0]
+cantPer[1] => comparadorNbits:U1.A[1]
+cantPer[2] => comparadorNbits:U1.A[2]
+cantPer[3] => comparadorNbits:U1.A[3]
+cuentaAscensor1[0] => comparadorNbits:U2.A[0]
+cuentaAscensor1[1] => comparadorNbits:U2.A[1]
+cuentaAscensor1[2] => comparadorNbits:U2.A[2]
+cuentaAscensor1[3] => comparadorNbits:U2.A[3]
+cuentaAscensor1[4] => comparadorNbits:U2.A[4]
+cuentaAscensor1[5] => comparadorNbits:U2.A[5]
+cuentaAscensor2[0] => comparadorNbits:U3.A[0]
+cuentaAscensor2[1] => comparadorNbits:U3.A[1]
+cuentaAscensor2[2] => comparadorNbits:U3.A[2]
+cuentaAscensor2[3] => comparadorNbits:U3.A[3]
+cuentaAscensor2[4] => comparadorNbits:U3.A[4]
+cuentaAscensor2[5] => comparadorNbits:U3.A[5]
+sensorEnergia => anomaliaEnSon.DATAIN
+sensorEnergia => anomaliaEn.DATAIN
+masde10 <= sobreCarga.DB_MAX_OUTPUT_PORT_TYPE
+abrirCerrarSon <= abrirCerrarSon.DB_MAX_OUTPUT_PORT_TYPE
+anomaliaEn <= sensorEnergia.DB_MAX_OUTPUT_PORT_TYPE
+anomaliaEnSon <= sensorEnergia.DB_MAX_OUTPUT_PORT_TYPE
+luz <= luz.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alarmas|comparadorNbits:U1
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alarmas|comparadorNbits:U2
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|alarmas|comparadorNbits:U3
+A[0] => Equal0.IN5
+A[0] => LessThan0.IN6
+A[1] => Equal0.IN4
+A[1] => LessThan0.IN5
+A[2] => Equal0.IN3
+A[2] => LessThan0.IN4
+A[3] => Equal0.IN2
+A[3] => LessThan0.IN3
+A[4] => Equal0.IN1
+A[4] => LessThan0.IN2
+A[5] => Equal0.IN0
+A[5] => LessThan0.IN1
+B[0] => Equal0.IN11
+B[0] => LessThan0.IN12
+B[1] => Equal0.IN10
+B[1] => LessThan0.IN11
+B[2] => Equal0.IN9
+B[2] => LessThan0.IN10
+B[3] => Equal0.IN8
+B[3] => LessThan0.IN9
+B[4] => Equal0.IN7
+B[4] => LessThan0.IN8
+B[5] => Equal0.IN6
+B[5] => LessThan0.IN7
+AiguB <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+AmayB <= AmayB.DB_MAX_OUTPUT_PORT_TYPE
+AmenB <= AmenB.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,200 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "03/31/2025 05:37:36"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module capturarLlego (
+	clk,
+	clear,
+	llego,
+	llego_capturado);
+input 	clk;
+input 	clear;
+input 	llego;
+output 	llego_capturado;
+
+// Design Ports Information
+// llego_capturado	=>  Location: PIN_J7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// llego	=>  Location: PIN_K8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clear	=>  Location: PIN_K7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clk	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \llego_capturado~output_o ;
+wire \clk~input_o ;
+wire \clk~inputclkctrl_outclk ;
+wire \llego~input_o ;
+wire \clear~input_o ;
+wire \llego_prev~feeder_combout ;
+wire \llego_prev~q ;
+wire \capturado~0_combout ;
+wire \capturado~q ;
+
+
+// Location: IOOBUF_X0_Y22_N16
+cycloneiii_io_obuf \llego_capturado~output (
+	.i(\capturado~q ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\llego_capturado~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \llego_capturado~output .bus_hold = "false";
+defparam \llego_capturado~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y14_N1
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G4
+cycloneiii_clkctrl \clk~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\clk~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \clk~inputclkctrl .clock_type = "global clock";
+defparam \clk~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y22_N8
+cycloneiii_io_ibuf \llego~input (
+	.i(llego),
+	.ibar(gnd),
+	.o(\llego~input_o ));
+// synopsys translate_off
+defparam \llego~input .bus_hold = "false";
+defparam \llego~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y22_N22
+cycloneiii_io_ibuf \clear~input (
+	.i(clear),
+	.ibar(gnd),
+	.o(\clear~input_o ));
+// synopsys translate_off
+defparam \clear~input .bus_hold = "false";
+defparam \clear~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y22_N2
+cycloneiii_lcell_comb \llego_prev~feeder (
+// Equation(s):
+// \llego_prev~feeder_combout  = \llego~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\llego~input_o ),
+	.cin(gnd),
+	.combout(\llego_prev~feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \llego_prev~feeder .lut_mask = 16'hFF00;
+defparam \llego_prev~feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y22_N3
+dffeas llego_prev(
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\llego_prev~feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\llego_prev~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam llego_prev.is_wysiwyg = "true";
+defparam llego_prev.power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y22_N16
+cycloneiii_lcell_comb \capturado~0 (
+// Equation(s):
+// \capturado~0_combout  = (!\clear~input_o  & ((\capturado~q ) # ((\llego~input_o  & !\llego_prev~q ))))
+
+	.dataa(\llego~input_o ),
+	.datab(\clear~input_o ),
+	.datac(\capturado~q ),
+	.datad(\llego_prev~q ),
+	.cin(gnd),
+	.combout(\capturado~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \capturado~0 .lut_mask = 16'h3032;
+defparam \capturado~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X1_Y22_N17
+dffeas capturado(
+	.clk(\clk~inputclkctrl_outclk ),
+	.d(\capturado~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\capturado~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam capturado.is_wysiwyg = "true";
+defparam capturado.power_up = "low";
+// synopsys translate_on
+
+assign llego_capturado = \llego_capturado~output_o ;
+
+endmodule

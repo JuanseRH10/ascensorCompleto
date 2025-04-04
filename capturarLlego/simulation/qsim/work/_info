@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\capturarLlego\simulation\qsim
+vcapturarLlego
+Z1 IWLV^IhUXM;L_<Ed9PeNPj2
+Z2 V5z_jzUlT9FSCRhbd:o3EM0
+Z3 dC:\altera\13.1\capturarLlego\simulation\qsim
+Z4 w1743417456
+Z5 8capturarLlego.vo
+Z6 FcapturarLlego.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+Z9 ncapturar@llego
+!i10b 1
+Z10 !s100 FLN8i[ZUZ[VF9G>TeJ>0`0
+!s85 0
+Z11 !s108 1743417456.790000
+Z12 !s107 capturarLlego.vo|
+Z13 !s90 -work|work|capturarLlego.vo|
+!s101 -O0
+vcapturarLlego_vlg_check_tst
+!i10b 1
+!s100 5;mYA`mD6SW8FN5K2?5=B3
+I_Mj2VSBF>NjLa]92nm93n0
+VHLGg`g=Q=;6iWe?hjhz4F3
+R3
+Z14 w1743417455
+Z15 8Waveform.vwf.vt
+Z16 FWaveform.vwf.vt
+L0 61
+R7
+r1
+!s85 0
+31
+Z17 !s108 1743417456.840000
+Z18 !s107 Waveform.vwf.vt|
+Z19 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R8
+ncapturar@llego_vlg_check_tst
+vcapturarLlego_vlg_sample_tst
+!i10b 1
+!s100 SUeD>W?JJXc132;UE=XUO2
+IN9G=5DPO^7^j@Rhal_NiG0
+V^B3hZ?eYV3YoF=h36kCUf3
+R3
+R14
+R15
+R16
+L0 29
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R8
+ncapturar@llego_vlg_sample_tst
+vcapturarLlego_vlg_vec_tst
+!i10b 1
+!s100 XiJfW<C702WNT229KT5_[2
+IW[Pg6ncNbgj1977XeH>HS0
+VH?P_6oN90R4dYhJ1H`Zbd1
+R3
+R14
+R15
+R16
+L0 156
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R8
+ncapturar@llego_vlg_vec_tst

@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\archivosAscensor\controlContadores\simulation\qsim
+vcontrolContadores
+Z1 !s100 4Id7mI3^oh^d?F5A;O?<T1
+Z2 I8;DGfYD@IPEOGlf;k99TR1
+Z3 VEJRTkaD;TST7;[eIU<OMU2
+Z4 dC:\altera\13.1\archivosAscensor\controlContadores\simulation\qsim
+Z5 w1743428842
+Z6 8controlContadores.vo
+Z7 FcontrolContadores.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|controlContadores.vo|
+Z10 o-work work -O0
+Z11 ncontrol@contadores
+!i10b 1
+!s85 0
+Z12 !s108 1743428843.541000
+Z13 !s107 controlContadores.vo|
+!s101 -O0
+vcontrolContadores_vlg_check_tst
+!i10b 1
+Z14 !s100 nSU`O8K@YkML65^?gGVgQ3
+Z15 IOEf2J942[gfaHVJJVLE971
+Z16 VTD`koBD<RM^m;_6b<`zDa3
+R4
+Z17 w1743428841
+Z18 8Waveform1.vwf.vt
+Z19 FWaveform1.vwf.vt
+L0 67
+R8
+r1
+!s85 0
+31
+Z20 !s108 1743428844.038000
+Z21 !s107 Waveform1.vwf.vt|
+Z22 !s90 -work|work|Waveform1.vwf.vt|
+!s101 -O0
+R10
+Z23 ncontrol@contadores_vlg_check_tst
+vcontrolContadores_vlg_sample_tst
+!i10b 1
+Z24 !s100 WiJAd<>zK0TOHocJHXFa:1
+Z25 InEhi9?EXOj12:eAWKBJ9P1
+Z26 V=UUCnYdI5_R;jNlia_kLd3
+R4
+R17
+R18
+R19
+L0 29
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z27 ncontrol@contadores_vlg_sample_tst
+vcontrolContadores_vlg_vec_tst
+!i10b 1
+!s100 :EJ?T_:e^VD69Go;AoGbW0
+Id^[D_M7>SRIFO@NFWM4nG1
+Z28 Vz7GAQ>i0<KHzXE7XYE<OQ0
+R4
+R17
+R18
+R19
+Z29 L0 216
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z30 ncontrol@contadores_vlg_vec_tst

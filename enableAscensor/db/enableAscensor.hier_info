@@ -1,0 +1,8 @@
+|enableAscensor
+sobreCarga => process_0.IN0
+estadoPuerta => process_0.IN1
+anomalia => process_0.IN1
+cambiandoEstado => process_0.IN1
+enable <= process_0.DB_MAX_OUTPUT_PORT_TYPE
+
+

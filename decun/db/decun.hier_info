@@ -1,0 +1,21 @@
+|decun
+sum[0] => Div0.IN36
+sum[0] => Mod0.IN63
+sum[1] => Div0.IN35
+sum[1] => Mod0.IN62
+sum[2] => Div0.IN34
+sum[2] => Mod0.IN61
+sum[3] => Div0.IN33
+sum[3] => Mod0.IN60
+sum[4] => Div0.IN32
+sum[4] => Mod0.IN59
+dec[0] << Div0.DB_MAX_OUTPUT_PORT_TYPE
+dec[1] << Div0.DB_MAX_OUTPUT_PORT_TYPE
+dec[2] << Div0.DB_MAX_OUTPUT_PORT_TYPE
+dec[3] << Div0.DB_MAX_OUTPUT_PORT_TYPE
+un[0] << Mod0.DB_MAX_OUTPUT_PORT_TYPE
+un[1] << Mod0.DB_MAX_OUTPUT_PORT_TYPE
+un[2] << Mod0.DB_MAX_OUTPUT_PORT_TYPE
+un[3] << Mod0.DB_MAX_OUTPUT_PORT_TYPE
+
+

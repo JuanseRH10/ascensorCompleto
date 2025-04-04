@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\detectorPiso\simulation\qsim
+vdetectorPiso
+Z1 !s100 ^QAg4JEJ^k7SZH3^kOcPE2
+Z2 IWQ;518?6]UOoT26RhVg;H0
+Z3 V=3:NFLj:fOdWSi_UdAD8R0
+Z4 dC:\altera\13.1\detectorPiso\simulation\qsim
+Z5 w1743402529
+Z6 8detectorPiso.vo
+Z7 FdetectorPiso.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|detectorPiso.vo|
+Z10 o-work work -O0
+Z11 ndetector@piso
+!i10b 1
+!s85 0
+Z12 !s108 1743402529.996000
+Z13 !s107 detectorPiso.vo|
+!s101 -O0
+vdetectorPiso_vlg_check_tst
+!i10b 1
+Z14 !s100 IC6oj[OIgz0n248c>hMmj2
+Z15 IhUbX;4`aafiT0152m_JTm3
+Z16 VSg9B:5:O9X1l?NzV6gX=g2
+R4
+Z17 w1743402528
+Z18 8Waveform.vwf.vt
+Z19 FWaveform.vwf.vt
+L0 67
+R8
+r1
+!s85 0
+31
+Z20 !s108 1743402530.041000
+Z21 !s107 Waveform.vwf.vt|
+Z22 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+Z23 ndetector@piso_vlg_check_tst
+vdetectorPiso_vlg_sample_tst
+!i10b 1
+Z24 !s100 HH?E4]zlhSEJ27A<^WUVg3
+Z25 I`AR[hQaSBincGA>An^kka0
+Z26 Vg6^IX4B8XITF^Tz7;^^E]1
+R4
+R17
+R18
+R19
+L0 29
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z27 ndetector@piso_vlg_sample_tst
+vdetectorPiso_vlg_vec_tst
+!i10b 1
+!s100 ]z>zP7H25`Tl]bA8O7mhI2
+ICF4L`On7>A_XRNCgZE7l02
+Z28 V0VoUFBegDB=XRE[@@hFSg3
+R4
+R17
+R18
+R19
+Z29 L0 251
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z30 ndetector@piso_vlg_vec_tst
